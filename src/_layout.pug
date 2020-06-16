@@ -1,0 +1,10 @@
+doctype html
+html(lang='en')
+  block title
+  link(rel='stylesheet', href='~/styles/markdown.css')
+body
+  include ./_nav.pug
+  main.markdown-body
+    block content
+  block foot
+  include ./_footer.pug

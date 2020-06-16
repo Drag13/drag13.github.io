@@ -1,0 +1,28 @@
+{
+  "name": "drag13.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build ./src/index.pug -d ./dist",
+    "start": "parcel -- watch serve ./src/index.pug -d ./dist",
+    "add": "node add-post.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Drag13/drag13.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Drag13/drag13.github.io/issues"
+  },
+  "homepage": "https://github.com/Drag13/drag13.github.io#readme",
+  "devDependencies": {
+    "jstransformer-markdown-it": "^2.1.0",
+    "marked": "^1.1.0",
+    "parcel": "^1.12.4",
+    "pug": "^3.0.0"
+  }
+}
