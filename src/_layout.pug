@@ -10,8 +10,8 @@ html(lang='en')
   link(rel='stylesheet', href='~/styles/markdown.css')
   link(rel='stylesheet', href='~/styles/site.css')
 body
-  include ./_nav.pug
-  main.markdown-body.main
-    block content
-  block foot
+  div.cnt
+    include ./_nav.pug
+    main.main.markdown-body
+      block content
   include ./_footer.pug
