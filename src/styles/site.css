@@ -1,13 +1,12 @@
 html,
 body {
   height: 100%;
-  /*min-height: 100%;*/
   margin: 0;
 }
 
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
   body {
-     height: auto;
+    height: auto;
   }
 }
 
@@ -26,6 +25,7 @@ body {
   align-items: center;
   background-color: aliceblue;
   margin-bottom: 2rem;
+  justify-content: space-between;
 }
 
 .nav a {
@@ -58,4 +58,5 @@ body {
   font-style: italic;
   text-decoration: none;
   color: gray;
+  font-size: 12px;
 }
