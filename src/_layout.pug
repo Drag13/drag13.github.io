@@ -1,14 +1,15 @@
 doctype html
 html(lang='en')
   block variables
-  meta(http-equiv='Content-Type' content="text/html; charset=utf-8")
   include _seo
+  meta(http-equiv='Content-Type' content="text/html; charset=utf-8")
   +seo(title, description, keywords, canonical)
   meta(name='application-name', content='Drag13 programmer\'s blog')
   meta(name='viewport' content="width=device-width, initial-scale=1.0")
   meta(name='author', content='Drag13')
   meta(name='robots', content='index follow')
   meta(name="application-name", content="Drag13 Dev Blog")
+  block pageTags
   link(rel="apple-touch-icon-precomposed", sizes="144x144", href="~/img/apple-touch-icon-144x144.png" )
   link(rel="apple-touch-icon-precomposed", sizes="152x152", href="~/img/apple-touch-icon-152x152.png" )
   link(rel="icon", type="image/png" href="~/img/favicon-32x32.png", sizes="32x32" )
