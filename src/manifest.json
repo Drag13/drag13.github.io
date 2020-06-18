@@ -1,0 +1,13 @@
+{
+    "name": "Drag13 Dev Blog",
+    "version": "0.1",
+    "manifest_version": "1",
+    "icons": [
+        {
+            "src": "./favicon.ico",
+            "sizes": "64x64 32x32 16x16",
+            "type": "image/x-icon"
+        }
+    ],
+    "display": "standalone"
+}
