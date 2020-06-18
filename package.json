@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "(parcel build ./src/index.pug -d ./dist --no-source-maps) && (npm run copy:robots) && (npm run copy:verification)",
+    "build": "(SET CI=TRUE) && (parcel build ./src/index.pug -d ./dist --no-source-maps) && (npm run copy:robots) && (npm run copy:verification)",
     "start": "parcel -- watch serve ./src/index.pug -d ./dist",
     "copy:verification": "copyfiles googlef290f693ed9c35ff.html ./dist",
     "copy:robots": "copyfiles ./robots.txt ./dist ",

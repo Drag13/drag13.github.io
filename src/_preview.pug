@@ -1,0 +1,16 @@
+mixin pp-header(date, title)
+  div.date=date
+  h2.header=title
+
+mixin pp-body(text, href, link)
+  p=text
+  p.link
+    if link
+      a(href=href) #{link}
+    else
+      a(href=href) Continue
+
+mixin pp(date, header, text, href, link)
+  div.pp
+    +pp-header(date, header)
+    +pp-body(text, href, link)

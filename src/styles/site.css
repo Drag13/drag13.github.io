@@ -48,6 +48,18 @@ body {
   max-width: 1012px;
 }
 
+.pp .header {
+  margin-top: 0;
+}
+
+.pp .date {
+  color: gray;
+}
+
+.pp .link {
+  margin-bottom: 3rem;
+}
+
 .footer {
   padding: 1rem;
   text-align: center;
