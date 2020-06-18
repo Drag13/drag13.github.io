@@ -1,4 +1,4 @@
-# Free Continuous Integration for your GitHub project with three easy steps - build, test, deploy
+# Free and easy Continuous Integration for your GitHub project with three easy steps - build, test, deploy
 
 Hi guys! Today we will learn how to setup Continuous Integration process for the C# project hosted on GitHub. This is very easy, can really improve your code quality and you always be sure that no one destroys your code with latest commit. Are you interested? Let's give it a try!
 

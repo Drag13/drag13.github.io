@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "parcel build ./src/index.pug -d ./dist",
+    "build": "(parcel build ./src/index.pug -d ./dist) && (npm run copy:robots)",
     "start": "parcel -- watch serve ./src/index.pug -d ./dist",
+    "copy:robots": "copyfiles ./robots.txt ./dist ",
     "add": "node add-post.js"
   },
   "repository": {
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/Drag13/drag13.github.io#readme",
   "devDependencies": {
+    "copyfiles": "^2.3.0",
     "jstransformer-markdown-it": "^2.1.0",
     "marked": "^1.1.0",
     "parcel": "^1.12.4",

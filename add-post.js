@@ -2,11 +2,14 @@ const { mkdirSync, writeFileSync } = require("fs");
 const { join } = require("path");
 const { cwd } = require("process");
 
-const indexPugTemplate = (title) =>
+const indexPugTemplate = (title, folder) =>
   `extends ./../../_layout.pug
 
-block title
-  title ${title}
+block variables
+  - var title = ${title}
+  - var description = 'DESCRIPTION'
+  - var keywords = 'KEYWORDS'
+  - var canonical = '${folder}/index.html'
 
 block content
   article
@@ -24,5 +27,5 @@ const title = titleName || generateTitleName(postName);
 const folder = join(cwd(), `./src/posts/${postName}`);
 
 mkdirSync(folder);
-writeFileSync(`${folder}/index.pug`, indexPugTemplate(title));
+writeFileSync(`${folder}/index.pug`, indexPugTemplate(title, folder));
 writeFileSync(`${folder}/content.md`, "");

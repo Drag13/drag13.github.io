@@ -1,7 +1,10 @@
 extends ./../../_layout.pug
 
-block title
-  title Free Continuous Integration for your GitHub project
+block variables
+  - var title = 'Easy Continuous Integration for your GitHub project'
+  - var description = 'Learing how to setup continuous integration process for the C# project hosted on GitHub with travis coverlet and kudu - build, test, deploy'
+  - var keywords = 'continuous integration, github, travis, c#, coverlet, kudu, .net, testing, ci/cd'
+  - var canonical = 'https://drag13.github.io/posts/ci-cd-net/index.html'
 
 block content
   article

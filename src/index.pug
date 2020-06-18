@@ -1,6 +1,9 @@
 extends ./_layout.pug
 
-block title
-  title Drag13 Dev Blog
+block variables
+  - var title = 'Drag13 Dev Blog'
+  - var description = 'Blog about web-programming, cloud computing, web-site performance and profiling'
+  - var keywords = 'programming, web-programming, javascript, performance, web-performance, performance-tuning, .net, c#, f#, html, css, drag13'
+  - var canonical = 'https://drag13.github.io/'
 block content
   include:markdown-it index.md
