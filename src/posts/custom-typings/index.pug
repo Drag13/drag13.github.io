@@ -1,4 +1,4 @@
-extends ./../../_layout.pug
+extends ../_layout.pug
 
 block variables
   - var title = 'How to add custom types into the TypeScript project'
@@ -7,5 +7,6 @@ block variables
   - var canonical = 'https://drag13.io/posts/custom-typings/index.html'
 
 block content
-  article
-    include:markdown-it(html=true) content.md
+  article.post
+    include:highlight:markdown-it content.md
+    p.tag [26.06.2020] #typescript #dts, #custom-types

@@ -1,4 +1,4 @@
-extends ./../../_layout.pug
+extends ../_layout.pug
 
 block variables
   - var title = 'How to get javascript bytecode from V8 and others in 2019'
@@ -8,4 +8,4 @@ block variables
 
 block content
   article
-    include:markdown-it content.md
+    include:highlight:markdown-it content.md

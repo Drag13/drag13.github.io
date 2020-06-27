@@ -1,4 +1,4 @@
-extends ./../../_layout.pug
+extends ../_layout
 
 block variables
   - var title = 'Top 5 HTTP Security Headers 2020'
@@ -8,4 +8,4 @@ block variables
 
 block content
   article
-    include:markdown-it content.md
+    include:highlight:markdown-it content.md

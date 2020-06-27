@@ -74,5 +74,3 @@ What about "typeRoots"? Isn't this option should fix all issues? The quick answe
 TypeScript is much more complicated than we see. Sometimes, despite all efforts, types will no be applied. In this case, I would recommend using ```--traceResolution``` flag to check how tsc tried to resolve modules. This might save a couple of hours for you.
 
 Hope this helps, see you soon!
-
-[26.06.2020] #typescript #dts, #custom-types

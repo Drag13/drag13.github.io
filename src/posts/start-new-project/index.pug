@@ -1,4 +1,4 @@
-extends ./../../_layout.pug
+extends ../_layout
 
 block variables
   - var title = 'How to start new JS project from scratch with automated formatting, linting, testing and documentation'
@@ -8,4 +8,4 @@ block variables
 
 block content
   article
-    include:markdown-it content.md
+    include:highlight:markdown-it content.md

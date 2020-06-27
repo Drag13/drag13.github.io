@@ -3,7 +3,7 @@ const { join } = require("path");
 const { cwd } = require("process");
 
 const indexPugTemplate = (title, folder) =>
-  `extends ./../../_layout.pug
+`extends ../_post-layout
 
 block variables
   - var title = ${title}
@@ -12,8 +12,9 @@ block variables
   - var canonical = '${folder}/index.html'
 
 block content
-  article
-    include:markdown-it content.md
+  article.post
+    include:highlight:markdown-it content.md
+    p.tag [DATE] TAGS
 `;
 
 const generateTitleName = (postName) =>

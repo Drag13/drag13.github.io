@@ -1,4 +1,5 @@
-extends ./_layout.pug
+extends ./shared/_layout.pug
+include _preview
 
 block variables
   - var title = 'Drag13 Dev Blog - JavaScript, Performance, Security'
@@ -6,7 +7,8 @@ block variables
   - var keywords = 'programming, web-programming, javascript, performance, security, web-performance, performance-tuning, .net, c#, f#, html, css, drag13'
   - var canonical = 'https://drag13.io/'
 
-include _preview
+block page-styles
+  link(rel="stylesheet", href="~/styles/landing.less")
 
 block content
   h1 Blog about JavaScript, performance and security. Let's talk a bit.
