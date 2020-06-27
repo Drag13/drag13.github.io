@@ -1,4 +1,4 @@
-extends ./../../shared/_layout.pug
+extends ../_layout.pug
 
 block variables
   - var title = 'Easy Continuous Integration for your GitHub project'
@@ -8,4 +8,4 @@ block variables
 
 block content
   article
-    include:markdown-it content.md
+    include:highlight:markdown-it content.md
