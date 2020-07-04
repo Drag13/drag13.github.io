@@ -57,32 +57,38 @@ And this is it! Now you can use React.JS application with CSP header without uns
 
 But what about performance? If we moved it out of the index.html, doesn't it slow the application loading? I was also wondering about this. So, I created a simple web application (B1 if you are wondering) in Azure, created default React application, and did a couple of tests with [perfrunner](https://www.npmjs.com/package/perfrunner). And here is what I've found
 
-## 3g network, cache enabled
+## 3G, cache enabled
 
 For the slow connections like 3G, if the visit is not the first one (resources are cached), no difference appears. [First-Contentful-Paint] and [Largest-Contentful-Paint] events are allmost equals for inlined and not inlined scenarious.
 
-![chart for 3g with cache test](./3gCache.png)
+![chart for 3g with cache test](./3gCache.jpg)
+
+## 4G, cache enabled
 
 For better connection, when resoruces already cached, scenario with opted-out inlining is slightly better. Difference is about 20ms for both events. So I would consider them equals.
 
 Charts for better clarity:
-![chart for 4g with cache test](./4gCache.png)
+![chart for 4g with cache test](./4gCache.jpg)
 
 However, the tests was done when resources are already cached. When user visits site first time, resources not cached and situation might be differet. Let's do some more tests!
 
-## 3g, cache off
+## 3G, disabled - first visit
 
-|Metric|Inline|Remote|
-|--|--|--|
-|FCP| 1527 | 1540 |
-|LCP| 2118 |  2129 |
+For slow network we see that very small difference. With inlined runtime chunk Largest-Contentful-Paint event appears at 2127. For the fetched runtime chunk, it appears slighty later - 2142 wich means 15ms later. So I would say they also more less equals
 
-## 4g, cache off
+![chart for 3g without cache](./3gnoCache.jpg)
 
-|Metric|Inline|Remote|
-|--|--|--|
-|FCP| 313 | 351 |
-|LCP| 400 |  423 |
+## 4G, disabled - first visit
 
-So, for frist visit we see light performance hit. But I woldn't say it is very big.
+For faster netwrok, like 4G, tests with fetched runtime chunks shows even better performance: 383ms vs 370ms. But, the difference is so small that we may treat them as equal.
+
+![chart for 4g without cache](./4gnoCache.jpg)
+
+So, from performance perspective, using fetched runtime chunk also seems safe.
+
+## Summary
+
+Making React applications compliant with Content-Security-Policy is easy and will help you imporove security of your project.
+
+
 
