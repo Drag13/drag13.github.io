@@ -14,6 +14,13 @@ block page-styles
 block content
     h1 Blog about JavaScript, performance and security. Let's talk a bit.
 
+    +pp(
+      ['security', 'content-security-policy', 'react'],
+      'HEADER',
+      'INTRO',
+      './posts/react-inline-runtimer-chunk/index.pug'
+    )
+
     +news(['perfrunner', 'performance', 'performance-monitoring'], 'Hey ho! Perfrunner already in alpha now! 🥳')
       include:markdown-it ./news/perfrunner-arived.md
 

@@ -1,0 +1,12 @@
+extends ../_layout
+
+block variables
+  - var title = 'How to use React without unsafe inline runtime chunk'
+  - var description = 'DESCRIPTION'
+  - var keywords = 'KEYWORDS'
+  - var canonical = 'https://drag13.io/posts/react-inline-runtimer-chunk/index.html'
+
+block content
+  article.post
+    include:highlight:markdown-it content.md
+    p.tag [DATE] TAGS

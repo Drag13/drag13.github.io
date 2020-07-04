@@ -3,10 +3,10 @@ const { join } = require("path");
 const { cwd } = require("process");
 
 const indexPugTemplate = (title, folder) =>
-`extends ../_post-layout
+`extends ../_layout
 
 block variables
-  - var title = ${title}
+  - var title = '${title}'
   - var description = 'DESCRIPTION'
   - var keywords = 'KEYWORDS'
   - var canonical = '${folder}/index.html'
