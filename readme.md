@@ -9,4 +9,10 @@ Under the hood it uses
 
 Check [https://drag.io](https://drag.io) for the content or my [twitter](https://twitter.com/137)!
 
+Latest articles:
+
+* [https://drag13.io/posts/custom-typings/index.html](How to add custom types to the TypeScript project)
+* [https://drag13.io/posts/security-headers/index.html](Top-5 HTTP Security Headers in 2020)
+
+
 // drag13
