@@ -1,12 +1,13 @@
 extends ../_layout
 
 block variables
-  - var title = 'How to use React without unsafe inline runtime chunk'
-  - var description = 'DESCRIPTION'
-  - var keywords = 'KEYWORDS'
+  - var title = 'How to use React without unsafe-inline runtime chunk and why'
+  - var description = 'Removing unsafe-inline chunk from React application is easy and will help you to protect your customers with content-security-policy header'
+  - var keywords = 'react, security, content-security-policy, remove unsafe-inline, react inline chunk, INLINE_RUNTIME_CHUNK, IMAGE_INLINE_SIZE_LIMIT'
   - var canonical = 'https://drag13.io/posts/react-inline-runtimer-chunk/index.html'
+  - var img = '~/img/kdpv/react-security.png'
 
 block content
   article.post
     include:highlight:markdown-it content.md
-    p.tag [DATE] TAGS
+    p.tag 07.07.2020 #react, #security, #content-security-policy

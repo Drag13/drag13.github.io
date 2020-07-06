@@ -1,6 +1,8 @@
-# How to user React without unsafe-inline and why.
+# How to use React without unsafe-inline and why.
 
-React.JS is an awesome library that widely used all over the world. However, it also contains some pitfalls that might negatively impact your application. And here I want to discuss one of such pitfalls - inlined runtime chunk that might affect your application security.
+![react and content-security-policy](~/img/kdpv/react-security.png)
+
+React.JS is an awesome library that widely used all over the world. However, it also contains some pitfalls that might negatively impact your application. And here I want to discuss one of such pitfalls - inlined runtime chunk that might prevent you from correct using highly useful security header - Content-Security-Policy.
 
 If you ever opened the built index.html, you probably already saw something like this:
 
@@ -53,7 +55,12 @@ The good news is that this option is already supported with INLINE_RUNTIME_CHUNK
 
 Or just use add INLINE_RUNTIME_CHUNK=false to the .env file
 
-And this is it! Now you can use React.JS application with CSP header without unsafe-inline (of course if you don't have other inlined code).
+And this is allmost it! The one more thing you probably already know, is that React will encode and inline all images that are less then 10kb into your js chunk. However, this behavior is forbidden by default with CSP header. If you have such images you can:
+
+* Allow base64 images with directive: ```img-src 'self' data:```
+* Disable embedding by adding ```IMAGE_INLINE_SIZE_LIMIT=0``` to your .env file
+
+Now you can use React.JS application with CSP header without unsafe-inline (of course if you don't have other inlined code).
 
 But what about performance? If we moved it out of the index.html, doesn't it slow the application loading? I was also wondering about this. So, I created a simple web application (B1 if you are wondering) in Azure, created default React application, and did a couple of tests with [perfrunner](https://www.npmjs.com/package/perfrunner). And here is what I've found
 

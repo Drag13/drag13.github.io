@@ -10,21 +10,21 @@ mixin header(header)
     h2.header
       block
 
-mixin pp-body(text, href, link)
+mixin pp-body(text, href, link, linkTitle)
   p=text
   if href
     p
       if link
-        a(href=href)=link
+        a(href=href title=linkTitle)=link
       else
-        a(href=href) Continue
+        a(href=href title=linkTitle) Continue
 
 mixin pp(tags, header, text, href, link)
   div.pp
     +taglist(tags)
     +header()
-      a.text(href=href) #{header}
-    +pp-body(text, href, link)
+      a.text(href=href title=header) #{header}
+    +pp-body(text, href, link, header)
 
 mixin news(tags, header)
   div.pp
