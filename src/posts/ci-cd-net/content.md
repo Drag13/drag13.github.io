@@ -31,7 +31,7 @@ Go to the [Travis](https://travis-ci.org/) and log in with GitHub account. Give 
 
 Go back to the repository, create new branch CIBuild and add the .travis.yml file to the root of the folder
 
-``` text
+```text
 language: csharp
 
 dotnet: 2.1.4
@@ -54,14 +54,14 @@ script:
 
 Commit and push your changes, then make a pull request. Now you should see something like this:
 
-![Travis ok image](https://raw.githubusercontent.com/Drag13/articles/master/DotnetCI/imgs/TravisBuildSuccess.PNG)
+![Travis ok image](./TravisBuildSuccess.PNG)
 
 This means that all is going ok. If you create a pull request that will not be buildable, Travis will report this.
 
-![Travis failed image](https://raw.githubusercontent.com/Drag13/articles/master/DotnetCI/imgs/TravisBuildFailed.PNG)
+![Travis failed image](./TravisBuildFailed.PNG)
 
 Don't forget to take build badge from the personal cabinet.
-[![Build Status](https://travis-ci.org/Drag13/CIDemo.svg?branch=master)](https://travis-ci.org/Drag13/CIDemo)
+[![Build Status](./passing.svg)](https://travis-ci.org/Drag13/CIDemo)
 
 ## CI Tests
 
@@ -140,10 +140,10 @@ Add this to the end of the .travis.yml file
 
 Commit and push. Now you should see something like this
 
-![Codecov report image](https://raw.githubusercontent.com/Drag13/articles/master/DotnetCI/imgs/CoverageReportSmall.png)
+![Codecov report image](./CoverageReportSmall.png)
 
 Don't forget to take second badge.
-[![codecov](https://codecov.io/gh/Drag13/CIDemo/branch/master/graph/badge.svg)](https://codecov.io/gh/Drag13/CIDemo)
+![Codecov badge](./badge.svg)
 
 ## CI Deploy to Azure
 
@@ -161,7 +161,7 @@ But what if you need to do some advanced stuff like build UI, update web.config,
 Go back to the repository. Add two new files to the root of the project
 
 * [.deployment](https://github.com/Drag13/CIDemo/blob/master/.deployment) // describes deployment steps
-* [build.cmd](https://github.com/Drag13/CIDemo/blob/master/deploy.cmd)   // describe deployment process
+* [build.cmd](https://github.com/Drag13/CIDemo/blob/master/deploy.cmd) // describe deployment process
 
 The build.cmd file may look a bit scary but in fact, it is very simple. Here what is going inside
 
