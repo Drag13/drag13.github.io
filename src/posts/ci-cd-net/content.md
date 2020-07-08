@@ -54,11 +54,11 @@ script:
 
 Commit and push your changes, then make a pull request. Now you should see something like this:
 
-![Travis ok image](./TravisBuildSuccess.PNG)
+![Travis ok image](./TravisBuildSuccess.png)
 
 This means that all is going ok. If you create a pull request that will not be buildable, Travis will report this.
 
-![Travis failed image](./TravisBuildFailed.PNG)
+![Travis failed image](./TravisBuildFailed.png)
 
 Don't forget to take build badge from the personal cabinet.
 [![Build Status](./passing.svg)](https://travis-ci.org/Drag13/CIDemo)
