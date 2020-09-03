@@ -26,7 +26,7 @@
   "devDependencies": {
     "@types/prismjs": "^1.16.1",
     "copyfiles": "^2.3.0",
-    "jsdom": "^16.3.0",
+    "jsdom": "^16.4.0",
     "jstransformer-markdown-it": "^2.1.0",
     "less": "^3.12.2",
     "marked": "^1.1.1",

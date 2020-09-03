@@ -1,0 +1,12 @@
+extends ../_layout
+
+block variables
+  - var title = 'Typescript Tricks Utility Types'
+  - var description = 'DESCRIPTION'
+  - var keywords = 'KEYWORDS'
+  - var canonical = 'https://drag13.io/posts/typescript-tricks-utility/index.html'
+
+block content
+  article.post
+    include:highlight:markdown-it content.md
+    p.tag [DATE] TAGS
