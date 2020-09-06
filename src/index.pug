@@ -14,6 +14,9 @@ block page-styles
 block content
     h1 Blog about JavaScript, performance and security
 
+    +news(['perfrunner', 'performance', 'performance-testing'], 'Hey ho! Perfrunner\'s config file already available with v.0.9! 🥳')
+      include:markdown-it ./news/perfrunner-config.md
+
     +pp(
       ['typescript', 'typings', 'declarations'],
       'TypeScript tips and tricks for beginners - Part 1: Declarations',
@@ -42,7 +45,7 @@ block content
       '~/img/kdpv/react-security.png'
     )
 
-    +news(['perfrunner', 'performance', 'performance-monitoring'], 'Hey ho! Perfrunner already in alpha now! 🥳')
+    +news(['perfrunner', 'performance', 'performance-testing'], 'Hey ho! Perfrunner already in alpha now! 🥳')
       include:markdown-it ./news/perfrunner-arived.md
 
     +pp(
