@@ -99,13 +99,19 @@ Speaking about partial types, I can't ignore two more helpful classes - `Omit` a
 type User = {
   name: string;
   email: string;
+  sex: NonExistedTypeFitsAll;
 };
 
 interface MultiEmailUser extends Omit<User, "email"> {
   email: string[];
 }
 ```
-As you can see, using this technique you don't need to copy-paste user type. You just transform it into something that fits better.
+
+As you can see, using this technique you don't need to copy-paste user type. You just transform it into something that fits better. If you need to omit more properties, just use Union type here:
+
+```typescript
+type CuttedUser =  Omit<User, "email" | "email">;
+```
 
 `Exclude` type used for the same purposes, but it deals with types, instead of key:
 
