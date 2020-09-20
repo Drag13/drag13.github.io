@@ -1,0 +1,13 @@
+extends ../_layout
+
+block variables
+  - var title = 'TypeScript Tricks - Utility Types with examples'
+  - var description = 'In this article we will learn how to use utility types, create types based on objects or tupples, transform types and override properties in TypeScript without copy-paste '
+  - var keywords = 'typescript, utility types, custom types, keyof, as const, infer, partial, omit, transform'
+  - var canonical = 'https://drag13.io/posts/typescript-tricks-utility-examples/index.html'
+  - var img = '~/img/kdpv/ts-utility.png'
+
+block content
+  article.post
+    include:highlight:markdown-it content.md
+    p.tag 20.09.2020 #typescript, #utilitytypes

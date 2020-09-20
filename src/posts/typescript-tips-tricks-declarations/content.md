@@ -1,4 +1,4 @@
-# TypeScript Tips and Tricks for beginners - Declarations
+# TypeScript Tips and Tricks - Declarations With Examples
 
 [![typescript tips and trics declarations](~/img/kdpv/ts-declarations.png)](./index.pug)
 

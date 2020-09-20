@@ -14,13 +14,22 @@ block page-styles
 block content
     h1 Blog about JavaScript, performance and security
 
+    +pp(
+      ['typescript', 'typings'],
+      'TypeScript Tips and Tricks - Utility Types With Examples',
+      'TypeScript is a very powerful language, however, it heavily relies on the types. And sometimes, you may found that you write more types than actual code. In this case, you should take a look into the Utility types that will help you to write fewer types and still keep your code type-safe.',
+      './posts/typescript-tricks-utility-examples/index.pug',
+      null,
+      '~img/kdpv/ts-utility.png'
+    )
+
     +news(['perfrunner', 'performance', 'performance-testing'], 'Hey ho! Perfrunner\'s config file already available with v.0.9! 🥳')
       include:markdown-it ./news/perfrunner-config.md
 
     +pp(
       ['typescript', 'typings', 'declarations'],
-      'TypeScript tips and tricks for beginners - Part 1: Declarations',
-      'TypeScript is a very powerful language and it is becoming more and more popular. It is easy to start but hard to master. In this article I will show you some useful tips and tricks about TypeScript declarations that that may help you in everyday coding and will keep your code type-safe.',
+      'TypeScript Tips and Tricks - Declarations With Examples',
+      'TypeScript is a very powerful language and it is becoming more and more popular. It is easy to start but hard to master. In this article I will show you some useful tips and tricks about TypeScript declarations that may help you in everyday coding and will keep your code type-safe.',
       './posts/typescript-tips-tricks-declarations/index.pug',
       null,
       '~img/kdpv/ts-declarations.png'
