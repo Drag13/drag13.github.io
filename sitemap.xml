@@ -1,53 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-	<url>
-		<loc>https://drag13.io/</loc>
-		<lastmod>2020-09-20T13:34:26+00:00</lastmod>
-		<priority>1.00</priority>
-	</url>
-	<url>
-		<loc>https://drag13.io/posts/typescript-tricks-utility-examples/index.html</loc>
-		<lastmod>2020-09-20T13:34:26+00:00</lastmod>
-		<priority>0.80</priority>
-	</url>
-	<url>
-		<loc>https://drag13.io/posts/typescript-tips-tricks-declarations/index.html</loc>
-		<lastmod>2020-09-20T13:34:26+00:00</lastmod>
-		<priority>0.80</priority>
-	</url>
-	<url>
-		<loc>https://drag13.io/posts/perfrunner-intro/index.html</loc>
-		<lastmod>2020-08-30T13:34:26+00:00</lastmod>
-		<priority>0.80</priority>
-	</url>
-	<url>
-		<loc>https://drag13.io/posts/react-inline-runtimer-chunk/index.html</loc>
-		<lastmod>2020-08-30T13:34:26+00:00</lastmod>
-		<priority>0.80</priority>
-	</url>
-	<url>
-		<loc>https://drag13.io/posts/custom-typings/index.html</loc>
-		<lastmod>2020-08-30T13:34:26+00:00</lastmod>
-		<priority>0.80</priority>
-	</url>
-	<url>
-		<loc>https://drag13.io/posts/security-headers/index.html</loc>
-		<lastmod>2020-08-30T13:34:26+00:00</lastmod>
-		<priority>0.80</priority>
-	</url>
-	<url>
-		<loc>https://drag13.io/posts/v8-bytecode/index.html</loc>
-		<lastmod>2020-08-30T13:34:26+00:00</lastmod>
-		<priority>0.80</priority>
-	</url>
-	<url>
-		<loc>https://drag13.io/posts/start-new-project/index.html</loc>
-		<lastmod>2020-08-30T13:34:26+00:00</lastmod>
-		<priority>0.80</priority>
-	</url>
-	<url>
-		<loc>https://drag13.io/posts/ci-cd-net/index.html</loc>
-		<lastmod>2020-08-30T13:34:26+00:00</lastmod>
-		<priority>0.80</priority>
-	</url>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://drag13.io/</loc>
+  <lastmod>2020-09-27T14:16:32+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://drag13.io/posts/typescript-tricks-utility-examples/index.html</loc>
+  <lastmod>2020-09-27T14:16:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://drag13.io/posts/typescript-tips-tricks-declarations/index.html</loc>
+  <lastmod>2020-09-27T14:16:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://drag13.io/posts/perfrunner-intro/index.html</loc>
+  <lastmod>2020-09-27T14:16:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://drag13.io/posts/react-inline-runtimer-chunk/index.html</loc>
+  <lastmod>2020-09-27T14:16:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://drag13.io/posts/custom-typings/index.html</loc>
+  <lastmod>2020-09-27T14:16:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://drag13.io/posts/security-headers/index.html</loc>
+  <lastmod>2020-09-27T14:16:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://drag13.io/posts/v8-bytecode/index.html</loc>
+  <lastmod>2020-09-27T14:16:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://drag13.io/posts/start-new-project/index.html</loc>
+  <lastmod>2020-09-27T14:16:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://drag13.io/posts/ci-cd-net/index.html</loc>
+  <lastmod>2020-09-27T14:16:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
 </urlset>
