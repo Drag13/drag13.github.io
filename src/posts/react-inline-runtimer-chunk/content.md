@@ -33,7 +33,7 @@ In this example, the server, using Content-Security-Policy header, dictates to t
 Content-Security-Policy: default-src 'self'; script-src 'unsafe-inline';
 ```
 
-This header is so cool, that it can also forbidd [eval](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval) which makes this header really great against different types of injection-based attacks. If you are interested in some details, here you can find more about Content-Security-Policy and some other useful security headers - [https://drag13.io/posts/security-headers](https://drag13.io/posts/security-headers).
+This header is so cool, that it can also forbidd [eval](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval) which makes this header really great against different types of injection-based attacks. If you are interested in some details, here you can find more about Content-Security-Policy and some other useful security headers - [https://drag13.io/posts/security-headers](https://drag13.io/posts/security-headers/index.html).
 
 Now you should see the issue. If you decide to protect your site with CSP-Header (and I highly recommend doing this), you will have to allow unsafe-inline, because, in another case, React will just not work. Which in turn, leaves the door open to other, potentially malicious, inlinings.
 

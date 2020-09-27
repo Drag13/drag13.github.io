@@ -1,8 +1,8 @@
-# How to start new JS project from scratch with automated formatting, linting, testing and documentation
+# How to start a new JavaScript project with automated formatting, linting, testing, and documentation
 
-Keeping your code consistent and well formatted not an easy task even when you work alone. But when you work with a team or with open source project all start getting even harder. Everyone has own code style, someone doesn't run tests, and no one writes documentation. This article will help you to set up all these things and even more - automate this routine to never do it manually.
+Keeping your code consistent and well-formatted not an easy task even when you work alone. But when you work with a team or with open source projects all start getting even harder. Everyone has their own code style, someone doesn't run tests, and no one writes documentation. This article will help you to set up all these things and even more - automate this routine to never do it manually.
 
-After reading you will get your own npm-ready project with next features:
+After reading you will get your own npm-ready project with the next features:
 
 * Text formatting and code style
 * Automated tests with code coverage and threshold

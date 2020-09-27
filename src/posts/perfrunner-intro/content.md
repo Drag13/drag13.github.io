@@ -1,4 +1,4 @@
-# Perfrunner - an automated tool to check your web site performance improvements against various conditions
+# Perfrunner - automated tool to track your website speed changes
 
 ![perfrunner intro image](~/img/kdpv/perfrunner-intro.jpg)
 
@@ -8,7 +8,7 @@ A few months ago I worked on performance improvements for one React-based web ap
 
 I decided that I don't want to do this anymore and this is how the [Perfrunner](https://github.com/Drag13/perfrunner) appeared.
 
-Perfrunner is a simple CLI tool that launches your web site or web application, collects performance metrics, and reports them back to you. The cool part is that Perfrunner does not only a single run but a series of runs against different networks, cache and CPU conditions!
+Perfrunner is a simple automated, CLI based tool that helps you track website performance changes. It collects some useful performance metrics like first and largest-contentful-paint, loaded resource size, and reports them back to you. The cool part is that Perfrunner does not only a single run but a series of runs against different networks, cache, and CPU conditions to give you as much information as possible!
 
 In other words, Perfrunner loads your application several times (3 by default) against each condition, calculates average results, and displays you the difference between all previous runs. You don't have to run them manually or calculate difference anymore, it is all automated!
 
