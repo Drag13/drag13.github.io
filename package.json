@@ -33,6 +33,6 @@
     "parcel": "^1.12.4",
     "parcel-plugin-imagemin": "^4.0.1",
     "prismjs": "^1.21.0",
-    "pug": "^3.0.0"
+    "pug": "^3.0.1"
   }
 }
