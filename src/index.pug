@@ -14,6 +14,9 @@ block page-styles
 block content
     h1 Blog about JavaScript, performance and security
 
+    +news(['performance', 'webperf'], 'Twitter bot dedicted only to #webperf is here!')
+      include:markdown-it(html) ./news/twt-bot.md
+
     +pp(
       ['typescript', 'typings'],
       'TypeScript Tips and Tricks - Utility Types With Examples',

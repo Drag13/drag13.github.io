@@ -23,10 +23,12 @@ const generateTitleName = (postName) =>
     .map((x) => x.replace(x[0], x[0].toUpperCase()))
     .join(" ");
 
-const [postName, titleName] = process.argv.slice(2);
-const title = titleName || generateTitleName(postName);
-const folder = join(cwd(), `./src/posts/${postName}`);
+(function addPost(postName, titleName) {
+  const title = titleName || generateTitleName(postName);
+  const folder = join(cwd(), `./src/posts/${postName}`);
 
-mkdirSync(folder);
-writeFileSync(`${folder}/index.pug`, indexPugTemplate(title, `https://drag13.io/posts/${postName}`));
-writeFileSync(`${folder}/content.md`, "");
+  mkdirSync(folder);
+  writeFileSync(`${folder}/index.pug`, indexPugTemplate(title, `https://drag13.io/posts/${postName}`));
+
+  writeFileSync(`${folder}/content.md`, "");
+})(...process.argv.slice(2));
