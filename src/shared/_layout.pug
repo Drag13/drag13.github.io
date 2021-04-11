@@ -3,12 +3,12 @@ include _seo
 doctype html
 html(lang='en' prefix='og: http://ogp.me/ns#')
   block variables
+  meta(name='viewport' content="width=device-width, initial-scale=1.0")
   meta(http-equiv='Content-Type' content="text/html; charset=utf-8")
   if (ci)
     meta(http-equiv='Content-Security-Policy' content="default-src 'self'; script-src 'none'")
   +seo(title, description, keywords, canonical, img)
   meta(name='application-name', content='Drag13 programmer\'s blog')
-  meta(name='viewport' content="width=device-width, initial-scale=1.0")
   meta(name='author', content='Drag13')
   meta(name='robots', content='index follow')
   meta(name="application-name", content="Drag13 Dev Blog")
