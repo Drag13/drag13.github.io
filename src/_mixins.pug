@@ -28,7 +28,7 @@ mixin pp-body(text, href, link, linkTitle)
         +continue(href, linkTitle, 'Continue')
 
 mixin pp(tags, header, description, href, link, img)
-  div.pp
+  section.pp
 
     +header()
       a.text(href=href title=header) #{header}
