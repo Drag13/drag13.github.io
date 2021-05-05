@@ -63,7 +63,7 @@ I found two cases when using this technic might be useful.
 
 - You are not able to add HTTP headers. GitHub Pages for a custom domain is a perfect example for now. This [will change](https://twitter.com/drag137/status/1387425202125033476), I believe, but now you can disable FLoC only using JavaScript.
 - You don't trust that putting the Permissions-Policy HTTP header will prevent getting user's data (as it was with the Do Not Track header).
-- You simply dislike Google 😊
+- You simply dislike Google 😈
 
 For those who found these points reasonable, I wrote the very small npm package named - [floc-off](https://www.npmjs.com/package/floc-off). It's really tiny (287 bytes) and safe to use.
 Simply install it using `npm i floc-off` and import it at the top of your entry file
