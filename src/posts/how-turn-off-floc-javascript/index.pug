@@ -1,0 +1,12 @@
+extends ../_layout
+
+block variables
+  - var title = 'Turn FLoC off'
+  - var description = 'Federated Learning of Cohorts (FLoC) - is the new way proposed by Google that allows Chrome to collect and share customer\'s personal information without the need for cookies. This article describes how to opt-out FLoC using JavaScript and why HTTP headers might not be enough'
+  - var keywords = 'FLoC Chrome JavaScript WebDevelopment Web Security Privacy'
+  - var canonical = 'https://drag13.io/posts/how-turn-off-floc-javascript/index.html'
+
+block content
+  article.post
+    include:highlight:markdown-it content.md
+    p.tag [05.05.2021] #FLoC #Chrome #JavaScript #WebDevelopment #Web #Security #Privacy
