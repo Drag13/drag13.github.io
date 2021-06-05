@@ -1,0 +1,12 @@
+extends ../_layout
+
+block variables
+  - var title = 'Getting performance metrics from React application using Puppeteer'
+  - var description = 'Explains how to get performance metrics like Largest Contentful Paint and Time To First Byte from React based application using Puppeteer with examples'
+  - var keywords = 'react.js react performance LCP TTFB LargestContentfulPaint ScriptDuration LayoutDuration CustomPerformanceEvent perfmetters webvitals corewebvitals core web vitals'
+  - var canonical = 'https://drag13.io/posts/react-performance-puppeteer-profile/index.html'
+
+block content
+  article.post
+    include:highlight:markdown-it content.md
+    p.tag 07.06.2021 performance react puppeteer webvitals
