@@ -2,11 +2,12 @@ extends ../_layout.pug
 
 block variables
   - var title = 'Easy Continuous Integration for your GitHub project'
-  - var description = 'Learing how to setup continuous integration process for the C# project hosted on GitHub with travis coverlet and kudu - build, test, deploy'
-  - var keywords = 'continuous integration, github, travis, c#, coverlet, kudu, .net, testing, ci/cd'
+  - var description = 'How to setup free continuous integration process for the C# project hosted on GitHub with Travis Coverlet and Kudu - build, test, deploy with code examples'
+  - var keywords = 'continuous integration, github, travis, c#, coverlet, kudu, .net, testing, ci/cd, cicd, dotnet-telemetry-optout, free continuous integration github'
   - var canonical = 'https://drag13.io/posts/ci-cd-net/index.html'
   - var img = '~/img/kdpv/travis-ci.png'
 
 block content
-  article
+  article.post
     include:highlight:markdown-it content.md
+    p.tag CI/CD Travis Coverlet

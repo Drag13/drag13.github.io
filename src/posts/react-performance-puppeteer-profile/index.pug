@@ -1,0 +1,13 @@
+extends ../_layout
+
+block variables
+  - var title = 'Getting performance metrics from React application using Puppeteer'
+  - var description = 'Explains how to automate gathering web-vitals performance metrics like LargestContentfulPaint and TimeToFirstByte from React-based application using Puppeteer with examples'
+  - var keywords = 'react.js, react, profile, performance metrics, corewebvitals, webvitals, FirstInputDelay, CumulativeLayoutShift, LargestContentfulPaint, ScriptDuration, puppeteer,custom performance event, webvitals, CumulativeLayoutShift, perfmetters'
+  - var canonical = 'https://drag13.io/posts/react-performance-puppeteer-profile/index.html'
+  - var img =  '~/img/kdpv/react-performance-puppeteer-profile-kdpv.jpg'
+
+block content
+  article.post
+    include:highlight:markdown-it content.md
+    p.tag 07.06.2021 performance react puppeteer webvitals
