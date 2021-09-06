@@ -139,7 +139,7 @@
     <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>lastEntry<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  lcpObserver<span class="token punctuation">.</span><span class="token function">observe</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token keyword">type</span><span class="token operator">:</span> <span class="token string">"largest-contentful-paint"</span><span class="token punctuation">,</span> buffered<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  lcpObserver<span class="token punctuation">.</span><span class="token function">observe</span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token string">"largest-contentful-paint"</span><span class="token punctuation">,</span> buffered<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
 <p>However, to make it work in a real life we will have to make it more <a href="https://web.dev/lcp/#differences-between-the-metric-and-the-api">complex</a></p>
@@ -165,7 +165,7 @@
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token comment">// start observing</span>
-    lcpObserver<span class="token punctuation">.</span><span class="token function">observe</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token keyword">type</span><span class="token operator">:</span> <span class="token string">"largest-contentful-paint"</span><span class="token punctuation">,</span> buffered<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    lcpObserver<span class="token punctuation">.</span><span class="token function">observe</span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token string">"largest-contentful-paint"</span><span class="token punctuation">,</span> buffered<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> lcpObserver<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 
@@ -257,7 +257,7 @@
 
 <span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
   <span class="token operator">&lt;</span>Profiler id<span class="token operator">=</span><span class="token string">"app-rendered"</span> onRender<span class="token operator">=</span><span class="token punctuation">{</span>putRenderedMark<span class="token punctuation">}</span><span class="token operator">&gt;</span>
-    Hello <span class="token keyword">from</span> react
+    Hello from react
   <span class="token operator">&lt;</span><span class="token operator">/</span>Profiler<span class="token operator">&gt;</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
