@@ -15,12 +15,19 @@ block content
     h1 Blog about JavaScript, performance and security
 
     +pp(
+      ['performance', 'react', 'puppeteer', 'slow network', 'slow-cpu'],
+      'Performance testing on a slow network and weak CPU using Puppeteer and React',
+      'This article shows how to build the script for gathering performance metrics with a slow network or weak CPU using Puppeteer and React. We will also explore cache and cacheless testing to cover the first-time visit and returning scenario. The example might be helpful in case you want to get some insights on how does your site behave on mobile devices that usually are weaker than laptops.',
+      './posts/react-performance-puppeteer-limits/index.pug',
+      null,
+    )
+
+    +pp(
       ['performance', 'react', 'puppeteer', 'webvitals'],
       'Getting performance metrics from React application using Puppeteer',
-      'In this article, I will show how to build the script to gather main performance metrics and Core Web Vitals from the React application using Puppeteer and TypeScript. I will also describe how to create and extract your own performance events using the React Profiler component. This might be useful if you decide to do some performance research or implement advanced performance testing into your CI/CD pipeline.',
+      'This article will show how to build the script to gather main performance metrics and Core Web Vitals from the React application using Puppeteer and TypeScript. I will also describe how to create and extract custom performance events using the React Profiler component. This example might be helpful if you decide to do some performance research or implement advanced performance testing into your CI/CD pipeline.',
       './posts/react-performance-puppeteer-profile/index.pug',
       null,
-      '~/img/kdpv/react-performance-puppeteer-profile-kdpv.jpg'
     )
 
     +pp(
