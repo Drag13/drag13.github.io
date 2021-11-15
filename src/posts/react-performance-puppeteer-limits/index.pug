@@ -1,0 +1,13 @@
+extends ../_layout
+
+block variables
+  - var title = 'Performance testing with slow network and CPU using Puppeteer and React'
+  - var description = 'This article shows how to do performance testing for the slow network or CPU using Puppeteer and React'
+  - var keywords = 'performance-testing, web-testing, puppeteer, react, slow-network'
+  - var canonical = 'https://drag13.io/posts/react-performance-puppeteer-limits/index.html'
+  - var img =  '~/img/kdpv/react-performance-puppeteer-profile-kdpv.jpg'
+
+block content
+  article.post
+    include:highlight:markdown-it content.md
+    p.tag 11.11.2021 #performance-testing, #web-testing, #puppeteer, #react, #slow-network, #webvitals
