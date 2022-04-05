@@ -14,6 +14,9 @@ block page-styles
 block content
     h1 Blog about JavaScript, performance and security
 
+    +news(['ukraine', 'react', "learning"], 'Start working on free React course to support Ukraine')
+      include:markdown-it(html) ./news/react-free-course.md
+
     +pp(
       ['performance', 'react', 'puppeteer', 'slow network', 'slow-cpu'],
       'Performance testing on a slow network and weak CPU using Puppeteer and React',
@@ -39,7 +42,7 @@ block content
        '~/img/kdpv/how-to-optout-floc.png',
     )
 
-    +news(['performance', 'webperf'], 'Twitter bot dedicted only to #webperf is here!')
+    +news(['performance', 'webperf'], 'Twitter bot dedicated only to #webperf is here!')
       include:markdown-it(html) ./news/twt-bot.md
 
     +pp(
