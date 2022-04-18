@@ -1,0 +1,12 @@
+extends ../_layout
+
+block variables
+  - var title = 'TypeScript Tips and Tricks - case study'
+  - var description = 'DESCRIPTION'
+  - var keywords = 'typescript, typescript-tricks, typescript-advanced'
+  - var canonical = 'https://drag13.io/posts/typescript-tips-tricks-case-study/index.html'
+
+block content
+  article.post
+    include:highlight:markdown-it content.md
+    p.tag [20.04.2022] typescript typescript-tricks
