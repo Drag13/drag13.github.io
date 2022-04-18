@@ -1,0 +1,158 @@
+![kdpv](https://raw.githubusercontent.com/Drag13/articles/master/DotnetCI/imgs/KDPV.PNG)
+
+По некоторым просьбам, публикую очень короткую выжимку моей предыдущей статьи о настройке Continuous Integration, но "как чеклист и для C#". Заодно добавил несколько альтернатив Travis-у. 
+
+Чтение займет не больше 3 минут, кому интересно - прошу под кат.
+<cut/>
+
+Установите [.NET Core SDK](https://www.microsoft.com/net/). Создайте новый репозиторий и проект.
+
+```cmd
+dotnet new sln --name CIDemo
+dotnet new web --name web
+dotnet sln CIDemo.sln add web/web.csproj
+```
+
+Добавьте .travis.yml файл в корневую папку проекта.
+
+``` text
+language: csharp
+
+dotnet: 2.1.4
+sudo: false
+
+env:
+    global:
+        - DOTNET_CLI_TELEMETRY_OPTOUT: 1
+
+script:
+    - dotnet build CIDemo.sln -c Release
+```
+
+> .travis.yml - служебный файл Travis, содержит настройки окружения, переменные и команды. Документация [тут](https://docs.travis-ci.com/)
+
+Залогиньтесь в [Travis](https://travis-ci.org/) и дайте ему доступ к вашему репозиторию. Залейте изменения на сервер.
+
+Удачный билд:
+![Travis ok image](https://raw.githubusercontent.com/Drag13/articles/master/DotnetCI/imgs/TravisBuildSuccess.PNG)
+
+~~А у меня локально все работает~~ Не удачный билд:
+![Travis failed image](https://raw.githubusercontent.com/Drag13/articles/master/DotnetCI/imgs/TravisBuildFailed.PNG)
+
+Добавьте тестовый проект
+
+```cmd
+dotnet new xunit --name test
+dotnet add test/test.csproj package coverlet.msbuild -v 1.2.0
+dotnet sln CIDemo.sln add test/test.csproj
+```
+
+> [xunit](https://xunit.github.io/) - фреймоврк для тестирования, а [coverlet.msbuild](https://github.com/tonerdo/coverlet/blob/master/README.md) - инструмент для создания отчетов покрытия кода
+
+Добавьте какой-то класс и напишите для него какой-нибудь тест.
+
+<spoiler title="Например: ">
+
+```c#
+using System;
+
+namespace web
+{
+    public class IdProvider
+    {
+        public Guid NewId()
+        {
+            return Guid.NewGuid();
+        }
+    }
+}
+```
+
+```c#
+using web;
+using Xunit;
+
+namespace test
+{
+    public class IdProviderTest
+    {
+        [Fact]
+        public void NewIdShouldReturnUniqueValues()
+        {
+            var idProvider = new IdProvider();
+            var id1 = idProvider.NewId();
+            var id2 = idProvider.NewId();
+
+            Assert.NotEqual(id1, id2);
+        }
+    }
+}
+```
+
+</spoiler>
+
+Добавьте в script секцию команду для запуска тестов
+
+```cmd
+ - dotnet test -c Release --no-build test/test.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+```
+
+> Минимальный уровень покрытия кода задается с помощью флага /p:Threshold=TRESHOLD_LVL
+
+Добавьте в .travis.yml новую секцию
+
+```text
+    after_script:
+        - bash <(curl -s https://codecov.io/bash)
+```
+
+> Команда отправляет результаты тестов на codecov. Документация [тут](https://docs.codecov.io/docs).
+
+Залогиньтесь в [https://codecov.io](https://codecov.io) и дайте ему доступ к вашему репозиторию.
+
+Результат работы codecov:
+![Codecov report image](https://raw.githubusercontent.com/Drag13/articles/master/DotnetCI/imgs/CoverageReportSmall.png)
+
+Все, CI настроен.
+
+## Финальная версия .travis.yml
+
+```text
+language: csharp
+
+dotnet: 2.1.4
+sudo: false
+
+env:
+    global:
+        - DOTNET_CLI_TELEMETRY_OPTOUT: 1
+
+script:
+    - dotnet build CIDemo.sln -c Release
+    - dotnet test -c Release --no-build test/test.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+
+after_script:
+        - bash <(curl -s https://codecov.io/bash)
+```
+
+## Аналоги Travis
+
+* [Codeship](https://codeship.com/pricing) (Бесплатно для OpenSource)
+* [Circleci](http://circleci.com/pricing/) (Бесплатно 1,500 минут билда - +- 300 билдов если что)
+* [Buddy](https://buddy.works/pricing) (Бесплатно 120 билдов но для OpenSource обещают повышать если написать в техподдержку)
+*  [AppVeyor](https://www.appveyor.com/pricing/) — бесплатен для OpenSource - спасибо @pankraty за наводку.
+
+
+
+Вместо Codecov для работы с тестами можно использовать [https://coveralls.io/](https://coveralls.io/). Тоже бесплатен для Open Source проектов.
+
+## Полезные ссылки
+
+* [Travis documentation](https://docs.travis-ci.com/)
+* [Codecov documentation](https://docs.codecov.io/docs)
+* [Coverlet documentation](https://github.com/tonerdo/coverlet/blob/master/README.md)
+* [Очень расширенная версия этой статьи](https://habr.com/post/354682/)
+
+Если вы знаете другие альтернативные и бесплатные решения для CI - пишите, добавлю в статью.
+
+Всем спасибо. Надеюсь получилось коротко и по сути.

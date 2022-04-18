@@ -1,0 +1,260 @@
+<img src="https://habrastorage.org/files/176/b18/5c8/176b185c82f940469e0b2ae33c18c24b.jpg" alt="здесь лежит поле из граблей"/>
+
+Не так давно меня заинтересовала проблема миграции приложений, написанных с первым Angular.js на второй. Кстати, эта статья должна была быть именно об этом. Но вмешался случай. До этого я поднимал Angular2 только на Node.js. А тут, поскольку я в основном работаю из-под Visual Studio, я решил запустить его из-под нее. Когда я пришел в себе после всех ударов граблей, по которым мне пришлось пройти, я решил выделить развертывание Angular2 под Visual Studio 2015 в отдельную статью. И что-то мне подсказывает, что лишней она не будет. 
+<cut text="Ну-с, давайте скальпель!" />
+<h2>Шаг первый. Реквизит.  </h2>
+Для начала нам нужно подготовить Visual Studio для работы с Node.js и NPM, так как почти все пакеты, от которых зависит Angular2, лежат в NPM. 
+
+Ставим <a href="https://visualstudiogallery.msdn.microsoft.com/8f2f2cbc-4da5-43ba-9de2-c9d08ade4941">NPM Task Runner</a> и <a href="https://visualstudiogallery.msdn.microsoft.com/753b9720-1638-4f9a-ad8d-2c45a410fd74">Package Installer</a>. Они пригодятся нам для взаимодействия студии и npm. 
+
+<spoiler title="Кстати о npm и о windows.">
+Как оказалось, windows ось весьма оригинальная. Установив Node.js, вы автоматически установили и npm. Но, если после этого вы установите npm глобально (используя -g флаг), то почти наверняка она будет установлена в другое место.
+	
+И (а вот тут волшебник достает кролика) <b>использоваться не будет.</b>
+Проблема заключается в том, что во время установки Node.js, в переменную среды PATH установщик Node, записывает путь к тому npm, который идет с ним. Поэтому, вызывая npm из-под консоли, вы будете обращаться именно к нему, а не к глобальному npm. 
+	
+Для того чтобы исправить такое странное поведение, нужно 
+	
+Найти место, куда был установлен глобальный (можно выполнить команду npm root -g)
+Заменить путь, указанный в PATH с npm ноды, на npm глобальный. Не забудьте сделать это и для системы и для пользователя, а также перезагрузить машину. </spoiler>
+После установки расширений, запускаем студию и создаем пустой веб проект. Теперь нам нужно обновить те node.js и npm, которые используются нашей Visual Studio. Студия использует не глобальный npm и node.js, а локальный. Она ничего не знает о том, что установлено у вас в системе и полагается на ту node.js которая лежит в External Web Tools. Если этого не знать, то студия будет использовать устаревшие компоненты и поднять приложение не получиться. Итак, кликнем на проекте и выберем quick install package. В появившемся окошке набираем gulp и ставим его. Конечно, делать это абсолютно не обязательно, но, честно говоря, мне лень создавать package.json вручную.
+После установки gulp мы получаем package.json, с которым можно работать дальше. 
+
+И первое, что нам нужно сделать, это проверить версию node.js и npm, с которыми будет работать наша студия. 
+
+Добавим секцию scripts в package.json с командами "npm -v" и  "node -v" и выполним их из-под task runner-a. 
+
+<spoiler title="package.json">
+<source lang="JavaScript">
+{
+  "name": "myproject",
+  "version": "1.0.0",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
+  "scripts": {
+    "getNpmVersion": "npm -v",
+    "getNodeVersion": "node -v"
+  }
+}
+</source>
+</spoiler>
+Лично у меня результаты были впечатляющие: node v0.10.31 и npm 1.4.9.  Еще раз обращаю внимание на то, что это версии, которые будут использоваться Visual Studio и ни установленный node, ни глобальный npm никакого отношения сейчас к ним не имеют. 
+
+Теперь, все это барахло нужно привести в порядок. Добавим новую команду в наш package.json: "updateNpm": "npm install npm@latest" и запустим ее. Подождав немного, запустим getNpmVersion. Npm обновился и теперь он версии 3.10.5.
+
+Однако с node.js этот подход не сработает. Если честно я не нашел способа обновить node.js, однако, нашел способ заставить студию использовать нужный мне экземпляр.
+
+Итак, для начала найдите, где у вас установлен node.js и скопируйте туда путь. Теперь идем в Tools -> Options -> Projects and Solutions -> External web tools и добавляем новый путь, указывающий на нормальную версию ноды (если ее нет, просто скачайте и поставьте). Не забудьте поднять новый путь на самый верх. Перезагружаем студию (windows перезагружать не надо) и выполняем команду getNodeVersion. Вуаля, версия обновлена. 
+
+После всех этих танцев с бубнами предлагаю пойти попить кофе. Дальше тоже будет не просто. 
+
+<h2>Шаг второй. Установка зависимостей.</h2>
+Продолжим мучить наш project.json. Теперь зальем в него все зависимости нашего приложения. Зависимости взяты из <a href="https://angular.io/docs/ts/latest/quickstart.html">5 MIN QUICKSTART</a>, подредактированы с учетом windows, и одним маленьким но очень гордым нюансом. 
+
+<spoiler title="Нюанс который смог.">
+Angular2 построен на typescript. (Хотя буквально на днях вышел quick start на чистом javascript). Поэтому одна из зависимостей нашего hello world приложения - это зависимость от typescript которая выглядит так  "typescript": "^1.8.10". Это означает, что при загрузке модулей, будет загружена последняя версия typescript, но не меньше чем 1.8.10. Внезапно, сборка, которую нам предоставляет quick start не поддерживает последнюю версию typescript из-за появления ключевого слово default при экспорте. По крайней мере это моя версия. Важно то, что с последней версией наш angular2 не "взлетит", а вот если ее зафиксировать и указать просто 1.8.10 то все должно быть хорошо.
+Баг уже отправлен, результаты ожидаются. 
+</spoiler>
+<spoiler title="package.json">
+<source lang="JavaScript">
+{
+  "name": "myproject",
+  "version": "1.0.0",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "typescript": "1.8.10",
+    "typings": "^1.0.4"
+  },
+
+  "dependencies": {
+    "@angular/common": "2.0.0-rc.4",
+    "@angular/compiler": "2.0.0-rc.4",
+    "@angular/core": "2.0.0-rc.4",
+    "@angular/forms": "0.2.0",
+    "@angular/http": "2.0.0-rc.4",
+    "@angular/platform-browser": "2.0.0-rc.4",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
+    "@angular/router": "3.0.0-beta.1",
+    "@angular/router-deprecated": "2.0.0-rc.2",
+    "@angular/upgrade": "2.0.0-rc.4",
+
+    "systemjs": "0.19.27",
+    "core-js": "^2.4.0",
+    "reflect-metadata": "^0.1.3",
+    "rxjs": "5.0.0-beta.6",
+    "zone.js": "^0.6.12",
+
+    "angular2-in-memory-web-api": "0.0.14"
+
+  },
+  "scripts": {
+    "postinstall": "typings install",
+    "typings": "typings",
+    "cmd": "npm typescript",
+    "getNpmVersion": "npm -v",
+    "getNodeVersion": "node -v"
+  }
+}
+</source>
+</spoiler>
+Теперь, из-под таск раннера запустим команду install и подождем, пока все пакеты установятся. Если все прошло хорошо, в папке node_modules у нас должно было появиться несколько других папок, среди которых должна быть папка "@angular". Если вы ее видите, значит пока что все идет хорошо и зависимости установлены. А если нет? Иногда могут возникать проблемы с cachem npm. Если пакеты не устанавливаются и вся консоль таск раннера красная от ошибок, попробуйте добавить еще одну команду в package.json - "npm cache clean" и выполнить ее. Возможно это поможет.
+
+<h2>Шаг третий. Конфигурируем typescript для Visual Studio.</h2>
+Настала очередь сделать еще несколько па в нашем бубновом танце. 
+Давайте добавим наш первый .ts файл. Создаем в корне папку app и добавляем туда пустой app.component.ts файл. Не стоит проявлять фантазию и придумывать свои имена. Все может сломаться даже от чиха. Теперь закрываем студию. 
+
+<spoiler title="Visual Studio и TypeScript! TypeScript и Visual studio">
+Во всех приличных домах настройки typescript задаются в специальном файле - tsconfig.json. Но Visual Studio дама капризная. Если мы будем работать с typescript в режиме CommonJS (а вот именно в нем мы и будем работать), то tsconfig.json студия будет игнорировать. А, между тем, там есть две очень важные для нас опции -    "emitDecoratorMetadata": true,  
+"experimentalDecorators": true. Так вот, эти флаги устанавливаются в .csproj файле ручками... Подробнее можно почитать <a href="http://stackoverflow.com/questions/30896227/visual-studio-2015-rc-typescript-experimental-decorators-error">тут</a>
+
+<spoiler title="Более полный набор опций">
+<source lang="XML">
+<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+  <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+  <TypeScriptSourceMap>true</TypeScriptSourceMap>
+  <TypeScriptTarget>ES5</TypeScriptTarget>
+  <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+  <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+  <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+  <TypeScriptModuleKind>System</TypeScriptModuleKind>
+  <TypeScriptOutFile />
+  <TypeScriptOutDir />
+  <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+  <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+  <TypeScriptMapRoot />
+  <TypeScriptSourceRoot />
+  <TypeScriptExperimentalDecorators>True</TypeScriptExperimentalDecorators>
+  <TypeScriptEmitDecoratorMetadata>True</TypeScriptEmitDecoratorMetadata>
+</PropertyGroup>
+</source>
+ </spoiler>
+</spoiler>
+Закрыв студию, находим наш *.csproj файл и добавляем в узел PropertyGroup две новые строки:
+
+<source lang="XML">
+<TypeScriptExperimentalDecorators>true</TypeScriptExperimentalDecorators>
+<TypeScriptEmitDecoratorMetadata>True</TypeScriptEmitDecoratorMetadata>
+</source>
+Теперь открываем проект, заходим в свойства и видим новую вкладку – TypeScript Build.
+Выставляем там EcmaScript 6 и Module System - Common Js. Сохраняем.
+
+<h2>Шаг четвертый. Код.</h2>
+Вот теперь можно добавить первые строки кода в наш app.component.ts 
+Копируем туда вот это и билдим проект. 
+
+<spoiler title="app.component.ts">
+<source lang="JavaScript">
+import { Component } from '@angular/core';
+@Component({
+    selector: 'my-app',
+    template: '<h1>My First Angular 2 App</h1>'
+})
+export class AppComponent { }
+</source>
+</spoiler>
+Если все пошло как надо, билд пройдет без ошибок. Это наш основной компонент или, другими словами, это и есть наше приложение. 
+
+Теперь давайте настроим его запуск (bootstrap). Для этого в папку app добавляем файл 
+
+<spoiler title="main.ts">
+<source lang="JavaScript">
+import { bootstrap }    from '@angular/platform-browser-dynamic';
+import { AppComponent } from './app.component';
+bootstrap(AppComponent);
+</source>
+</spoiler>
+И опять билдим проект. Опять ошибок быть не должно. Можно, конечно, и не билдить, но мне как-то спокойнее.
+
+Теперь в корень проекта добавляем 
+
+<spoiler title="index.html">
+<source lang="HTML">
+<html>
+<head>
+    <title>Angular 2 QuickStart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <!-- 1. Load libraries -->
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <!-- 2. Configure SystemJS -->
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('app').catch(function(err){ console.error(err); });
+    </script>
+</head>
+<!-- 3. Display the application -->
+<body>
+    <my-app>Loading...</my-app>
+</body>
+</html>
+</source>
+</spoiler>
+и, тоже в корень, 
+
+<spoiler title="systemjs.config.js">
+<source lang="JavaScript">
+/**
+ * System configuration for Angular 2 samples
+ * Adjust as necessary for your application needs.
+ */
+(function (global) {
+    // map tells the System loader where to look for things
+    var map = {
+        'app': 'app', // 'dist',
+        '@angular': 'node_modules/@angular',
+        'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
+        'rxjs': 'node_modules/rxjs'
+    };
+    // packages tells the System loader how to load when no filename and/or no extension
+    var packages = {
+        'app': { main: 'main.js', defaultExtension: 'js' },
+        'rxjs': { defaultExtension: 'js' },
+        'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
+    };
+    var ngPackageNames = [
+      'common',
+      'compiler',
+      'core',
+      'forms',
+      'http',
+      'platform-browser',
+      'platform-browser-dynamic',
+      'router',
+      'router-deprecated',
+      'upgrade',
+    ];
+    // Individual files (~300 requests):
+    function packIndex(pkgName) {
+        packages['@angular/' + pkgName] = { main: 'index.js', defaultExtension: 'js' };
+    }
+    // Bundled (~40 requests):
+    function packUmd(pkgName) {
+        packages['@angular/' + pkgName] = { main: '/bundles/' + pkgName + '.umd.js', defaultExtension: 'js' };
+    }
+    // Most environments should use UMD; some (Karma) need the individual index files
+    var setPackageConfig = System.packageWithIndex ? packIndex : packUmd;
+    // Add package entries for angular packages
+    ngPackageNames.forEach(setPackageConfig);
+    var config = {
+        map: map,
+        packages: packages
+    };
+    System.config(config);
+})(this);
+</source>
+</spoiler>
+
+<h2>Шаг пятый. Попытка взлета.</h2>
+А теперь запускаем космонавта! Ну, стартуем приложение.  
+
+Если все пошло хорошо, вы должны увидеть надпись My First Angular 2 App на вашем экране. Готовый код доступен на github вот <a href="https://github.com/Drag13/MvcWithAngular2">тут</a>. 
+
+Cкачать темплейт можно <a href="https://visualstudiogallery.msdn.microsoft.com/99c54e33-50be-4c3e-9430-ee4ea3e02aff">тут</a>
+
+Всем спасибо за внимание и безграбельного будущего.

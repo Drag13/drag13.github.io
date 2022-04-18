@@ -1,0 +1,385 @@
+![](https://habrastorage.org/webt/de/cu/3u/decu3uxv998uiwmqbioi99ojnfi.png)
+
+Всем привет. Недавно мне попалась задача настроить оборот приватных npm пакетов. Все звучало очень интересно и многообещающе пока не оказалось, что делать там совсем не много. Тут бы все и закончилось, но возникла вторая задача - написать демо репозиторий для npm пакета, который можно было бы взять, клонировать и на его базе быстро создать что-то полезное и в едином стиле. 
+
+В результате получился проект с настроенным форматированием, кодстайлом, тестами на каждый пулл, лимитами на покрытие кода, отчетом о покрытии кода и автоматической документацией. Плюс удобная публикация в npm. Подробности о настройке - под катом.
+<cut/>
+
+## Требования
+
+Cначала я прикинул что у нас уже есть:
+
+* Новые проекты пишутся на TypeScript
+* Кроме новых проектов, есть еще куча проектов на чистом JavaScript
+* Есть требования писать тесты и результаты нужно отправлять на анализ
+
+Потом прикинул свои хотелки - раз уж есть время и желание, почему бы не разгуляться. Что я хочу еще:
+
+* Хочу единый стиль форматирования
+* Хочу единый стиль TypeScript
+* Хочу документацию, но не хочу ее писать
+* Вообще хочу все автоматизировать по максимуму. Что бы фыр-фыр-фыр и в продакшн
+
+В итоге требования оформились в следующее:
+
+* Модуль должен быть на TypeScript и проверен с помощью TsLint
+* Модуль должен быть используемым из-под TypeScript и из-под JavaScript
+* Тесты должны быть настроены на git hook, минимальное покрытие кода должно быть тоже настроено, статистика должна быть
+* Форматирование должно быть настроено
+* Документация должна создаваться из кода
+* Публикация должна быть удобной и единообразной
+* Все что можно должно быть автоматизировано
+
+Вроде бы неплохо, нужно пробовать.
+
+## Предварительные телодвижения
+
+Создаем (клонируем) репозиторий, инициализируем package.json, ставим локально TypeScript. Вообще все зависимости ставим локально, т.к. все будет уходить на сервер. Не забываем [фиксировать зависимости версий](https://habr.com/post/344606/).
+
+```cmd
+git init
+npm init
+npm i -D typescript
+./node_modules/.bin/tsc --init
+```
+
+Тут же на месте нужно подправить tsconfig.json под себя - выставить target, libs, include/exclude, outDir и остальные опции.
+
+## Стиль форматирования
+
+Для сохранения единообразия форматирования я взял два инструмента. Первый это файл .editorconfig. Он понимается всеми основными IDE (WebStorm, VSCode, Visual Studio и т.д.), не требует установки ничего лишнего и работает с большим количеством типов файлов - js, ts, md, и так далее.
+
+```yml
+#root = true
+
+[*]
+indent_style = space
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+max_line_length = 100
+indent_size = 4
+
+[*.md]
+trim_trailing_whitespace = false
+```
+
+Теперь автоформатирование будет вести себя более-менее одинаково у меня и у коллег.
+
+Второй инструмент - [prettier](https://github.com/prettier/prettier). Это npm пакет, который проверяет, и по возможности, автоматически корректирует ваше форматирование текста. Установите его локально и добавьте первую команду в package.json
+
+```cmd
+npm i -D prettier
+```
+
+package.json
+
+```json
+"prettier": "prettier --config .prettierrc.json --write src/**/*.ts"
+```
+
+У prettier нет команды init, так что [конфигурировать](https://prettier.io/docs/en/configuration.html) его нужно вручную. Создайте .prettierrc.json в корне проекта вот примерно с таким спорным содрежанием (если что - пост совсем не о том, какие кавычки лучше, но вы можете попробовать)
+
+.prettierrc.json
+
+```json
+{
+    "tabWidth": 4,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "arrowParens": "always"
+}
+```
+
+Теперь создайте папку src, в ней создайте index.ts с каким-то условным содержанием и попробуйте запустить prettier. Если ему не понравится ваше форматирование - он его исправит автоматически. Очень удобно. Если вы не хотите вспоминать об этом только во время коммита/пуша можно [настроить его на автозапуск](https://prettier.io/docs/en/watching-files.html) или поставить расширение для студии.
+
+## Стиль кода
+
+Со стилем кода все тоже не сложно. Для JavaScript есть [eslint](https://eslint.org/), для TypeScript есть [tslint](https://palantir.github.io/tslint/). Ставим tslint и создаем tsconfig.js для хранения настроек
+
+```cmd
+npm i -D tslint
+./node_modules/.bin/tslint --init
+```
+
+package.json
+
+```json
+"lint": "tslint -c tslint.json 'src/**/*.ts' 'tests/**/*.spec.ts'"
+```
+
+Вы можете написать собственные правила, а можете использовать уже существующие правила с помощью параметра extend. [Вот](https://www.npmjs.com/package/tslint-config-airbnb), например, конфиг от airbnb.
+
+
+<spoiler title="Разработчики tslint шутят">
+```js
+module.exports = {
+    extends: "./tslint-base.json",
+    rules: {
+        "no-excessive-commenting": [true, {maxComments: Math.random() * 10}]
+    }
+};
+```
+
+Ну разве это не красиво?
+</spoiler>
+
+Есть важный момент - tslint и prettier пересекаются по функционалу (например в длинне строки или "висящих" запятых). Так что, если вы будете использовать оба - нужно будет следить за соответствием или отказаться от чего-то.
+
+И еще, для тех кто хочет проверять не все файлы, а только staged - есть пакет [lint-staged](https://github.com/okonet/lint-staged)
+
+## Тесты
+
+Что нам нужно от тестов прежде всего? Во-первых, чтобы они запускались автоматически, во-вторых контроль покрытия, в-третьих какой-то отчет, желательно в lcov формате (если что - lcov отлично понимается разными анализаторам - от SonarQube до CodeCov). Автоматизацией мы займемся чуток позже, пока настроим сами тесты.
+
+Ставим [karma](http://karma-runner.github.io/2.0/index.html), [jasmine](https://jasmine.github.io/) и весь соответствующий ей обвес
+
+```cmd
+npm i -D karma karma-jasmine jasmine karma-typescript karma-chrome-launcher @types/jasmine
+./node_modules/.bin/karma init
+```
+
+Немного модифицируем karma.conf.js и сразу настроим работу с покрытием
+
+<spoiler title="karma.conf.js">
+```js
+karmaTypescriptConfig : {
+    include: ["./src/**/*.ts", "./tests/**/*.spec.ts"],
+    tsconfig: "./tsconfig.json",
+
+    reports: {
+        "html": "coverage",
+        "lcovonly": {
+            directory: './coverage',
+            filename: '../lcov.dat'
+        }
+    },
+    coverageOptions: {
+        threshold: {
+            global: {
+                statements: 60,
+                branches: 60,
+                functions: 60,
+                lines: 60,
+                excludes: []
+            },
+            file: {
+                statements: 60,
+                branches: 60,
+                functions: 60,
+                lines: 60,
+                excludes: [],
+                overrides: {}
+            }
+        }
+    },
+}
+```
+</spoiler>
+
+И, конечно, не забываем дописать новую команду в package.json
+
+package.json
+
+```json
+"test": "karma start"
+```
+
+Если вы используете или планируете использовать CI то лучше поставить [HeadlessChrome](https://github.com/GoogleChrome/puppeteer):
+
+```cmd
+npm i -D puppeteer
+```
+
+И доконфигурировать Karma (Chrome исправить на ChromeHeadless) плюс еще кое-что. Правки можно посмотреть в [демо репозитории](https://github.com/Drag13/IsNumberStrict).
+
+Запустите тесты, проверьте что все работает. Заодно проверьте отчет о покрытии (он находится в папке coverage) и уберите его из-под контроля версий, в репозитории он не нужен. 
+
+Отчет: 
+
+![](https://habrastorage.org/webt/9h/0l/pi/9h0lpiplvfhu8pxbrawnnwysdw4.png)
+
+## Стиль коммитов
+
+Коммиты тоже можно унифицировать (и заодно довести кого-то до белого каления, если переборщить, так что лучше без фанатизма). Для этого я взял [commitizen](https://github.com/commitizen/cz-cli). Он работает в форме диалога, поддерживает conventional-changelog формат (из его коммитов можно создавать changelog) и для него есть VsCode [плагин](https://github.com/KnisterPeter/vscode-commitizen)
+
+```cmd
+npm i -D commitizen
+npm i -D cz-conventional-changelog
+```
+
+cz-conventional-changelog это адаптер, который отвечает за вопросы, и как следствие, за формат ваших коммитов
+
+Добавьте новую команду в scripts секцию
+
+```json
+"commit":"git-cz"
+```
+
+И новую секцию package.json - config для commitizen
+
+```json
+"config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    }
+```
+
+Диалог с commitizen выглядит так:
+
+![](https://habrastorage.org/webt/tn/xk/_l/tnxk_ll7a-chazpw8p0a2fnl3wk.png)
+
+## Документация
+
+Теперь к документации. Документация у нас будет двух видов - из кода и из коммитов. Для документации из кода я взял [typedoc](https://www.npmjs.com/package/typedoc) (аналог [esdoc](https://esdoc.org/) но для TypeScript). Он очень просто ставится и работает. Главное не забудьте убрать результаты его трудов из-под контроля версий.
+
+```cmd
+npm i typedoc -D
+```
+
+и обновляем package.json
+
+package.json
+
+```json
+"doc": "typedoc --out docs/src/ --readme ./README.md"
+```
+
+Флаг --readme заставит включить readme в главную страницу документации что удобно.
+
+Второй тип документации это changelog, и с ним нам поможет [conventional-changelog-cli](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-cli) пакет.
+
+```cmd
+npm i -D conventional-changelog-cli
+```
+
+package.json
+
+```json
+"changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
+```
+
+От angular здесь только форматирования и ничего больше. Теперь для того что бы обновить changelog достаточно запусть npm run changelog. Главное внимательно писать коммиты. Ну мы же всегда пишем идеальные коммиты, так что это проблемой быть не должно.
+
+## Билд
+
+Поскольку наш пакет должен работать и для JavaScript, нам нужно превратить TypeScript в JavaScript. Кроме того, неплохо было бы сделать еще и минифицированный бандл, просто на всякий случай. Для этого нам понадобится [uglifyjs](https://www.npmjs.com/package/uglify-js) и немного подправить package.json
+
+```cmd
+npm i -D uglifyjs
+```
+
+package.json
+
+```json
+"clean":"rmdir dist /S /Q",
+"build": "tsc --p ./ --sourceMap false",
+"bundle": "uglifyjs ./dist/*.js --compress --mangle --output ./dist/index.min.js"
+```
+
+Кстати, если вы хотите контролировать размер вашего проекта, есть еще два интересных пакета
+
+* [bundlesize](https://www.npmjs.com/package/bundlesize)
+* [sizelimit](https://www.npmjs.com/package/size-limit) - тоже самое но на вебпаке
+
+Их точно также можно интегрировать в процесс коммита/пуша/паблиша что бы держаться в допустимых размерах бандла. Очень, очень полезно.
+
+## Автоматизация
+
+Ну вот, основные шаги мы уже сделали, теперь все нужно автоматизировать иначе работать будет откровенно неудобно. 
+
+Для этого нам понадобится еще один пакет - [husky](https://www.npmjs.com/package/husky). Он переписывает git hooks и вызывает сопоставленные команды из package.json. Например, когда вы делаете коммит, сработает precommit, push - prepush и так далее. Если скрипт вернет ошибку, коммит упадет.
+
+```cmd
+npm i -D husky
+```
+
+package.json
+
+```json
+"precommit":"npm run prettier",
+"prepush": "call npm run lint && call npm run test"
+```
+
+Тут есть важный нюанс, использование call синтаксиса не кроссплатформенно и на unix системах не взлетит. Так что если хотите все сделать по-честному придется поставить еще и [npm-run-all](https://www.npmjs.com/package/npm-run-all) пакет, он делает все тоже самое но кросплатформенно.
+
+## Публикация
+
+Ну вот мы и дошли до публикации нашего (пусть и пустого) пакета. Давайте подумаем, что мы хотим от публикации?
+
+* Еще раз все протестировать
+* Собрать билд артефакты
+* Собрать документацию
+* Поднять версию
+* Запушить теги
+* Отправить в npm
+
+Руками это все делать - грустно. Или забудешь что-то, или чеклист писать нужно. Нужно тоже автоматизировать. Можно поставить еще один пакет - [unleash](https://www.npmjs.com/package/unleash). А можно воспользоваться нативными хуками самого npm - preversion, version, postversion, например вот так:
+
+```json
+"preversion": "npm run test",
+"version": "call npm run clean && call npm run build && npm run bundle && call npm run doc && call npm run changelog && git add . && git commit -m 'changelogupdate' --no-verify",
+"postversion": "git add . && git push && git push --tags",
+```
+
+Осталось указать для package.json что включать в пакет, точку входа и путь к нашим типам (не забудьте указать --declaration флаг в tsconfig.json что бы получить d.ts файлы)
+
+package.json
+
+```json
+"main": "./dist/index.min.js",
+"types": "./dist/index.d.ts",
+"files": [
+        "dist/",
+        "src/",
+        "tests/"
+    ]
+```
+
+Ну вот вроде бы и все. Теперь достаточно выполнить
+
+```cmd
+npm version ...
+npm publish
+```
+
+И все остальное будет сделано в автоматическом режиме.
+
+## Бонус
+
+В качестве бонуса есть [демо репозиторий](https://github.com/Drag13/IsNumberStrict), который все это поддерживает + CI с помощью travis-ci. Напомню, там настроен HeadlessChrome так что, если вам это важно, советую туда заглянуть.
+
+## Благодарности
+
+Большая благодарность [Алексею Волкову](https://github.com/rosko) за его доклад на JsFest, который и стал основой этой статьи.
+
+Спасибо @max7z, @indestructible, @justboris за уточнение, что пути к локальным зависимостям можно не указывать.
+
+## И немного статистики
+
+* Размер node_modules: 444 MB (NTFS)
+* Количество зависимостей первого уровня: 17
+* Общее количество использованых пакетов: 643
+
+## Полезные ссылки
+
+* [.editorconfig](https://editorconfig.org/)
+* [prettier](https://github.com/prettier/prettier)
+* [tslint](https://palantir.github.io/tslint/)
+* [eslint](https://eslint.org/)
+* [typedoc](https://www.npmjs.com/package/typedoc)
+* [esdoc](https://esdoc.org/)
+* [commitizen](https://github.com/commitizen/cz-cli)
+* [commitizen-плагин для vscode](https://github.com/KnisterPeter/vscode-commitizen)
+* [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog)
+* [uglifyjs](https://www.npmjs.com/package/uglify-js)
+* [bundlesize](https://www.npmjs.com/package/bundlesize)
+* [sizelimit](https://www.npmjs.com/package/size-limit)
+* [husky](https://www.npmjs.com/package/husky)
+* [npm-run-all](https://www.npmjs.com/package/npm-run-all)
+* [unleash](https://www.npmjs.com/package/unleash)
+* [демо репозиторий](https://github.com/Drag13/IsNumberStrict)
