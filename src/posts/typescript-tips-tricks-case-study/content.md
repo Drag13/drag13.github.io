@@ -1,4 +1,4 @@
-# TypeScript Tips and Tricks - case study
+# Advanced TypeScript - Tips and Tricks
 
 It would seem that in 2022 it is a bit too late to talk about TypeScript - the technology is well known and popular. Despite this, some times TypeScript still used half-heartedly. Simple type annotations, null checking and nothing more. Therefore, I brought some interesting, purely practical cases to show mighty TypeScript in action!
 
