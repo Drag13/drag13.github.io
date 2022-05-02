@@ -14,6 +14,14 @@ block page-styles
 block content
     h1 Blog about JavaScript, performance and security
 
+    +pp(
+      ['typescript', 'typescript-tricks', 'typescript-advanced'],
+      'Advanced TypeScript Tips and Tricks - Case Study',
+      'It would seem that in 2022 it is a bit too late to talk about TypeScript - the technology is well known and popular. Despite this, some times TypeScript still used half-heartedly. Simple type annotations, null checking and nothing more. Therefore, I brought some interesting, purely practical cases to show mighty TypeScript in action!',
+      './posts/typescript-tips-tricks-case-study/index.pug',
+      null,
+    )
+
     +news(['ukraine', 'react', "learning"], 'Start working on free React course to support Ukraine')
       include:markdown-it(html) ./news/react-free-course.md
 
