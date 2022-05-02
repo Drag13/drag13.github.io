@@ -1,5 +1,3 @@
-# All materials for the new course React For Beginners have been published!
-
 As you already know, on April I started working on the free React Course for Beginners. It was a long ride and now I am extremely happy to announce, that all program already finished and all materials published for everybody:
 
 - [What is React](https://www.youtube.com/watch?v=fQ_UNyQBiqg)
