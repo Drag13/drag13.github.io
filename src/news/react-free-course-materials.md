@@ -1,7 +1,7 @@
 As you already know, on April I started working on the free React Course for Beginners. It was a long ride and now I am extremely happy to announce, that all program already finished and all materials published for everybody:
 
-- [What is React](https://www.youtube.com/watch?v=fQ_UNyQBiqg)
-- [A new project with create-react-app](https://www.youtube.com/watch?v=2r1TW9yPhlQ)
+- [What is React](https://drag13.io/react-learning-course-short/react-intro)
+- [A new project with create-react-app](https://drag13.io/react-learning-course-short/react-cra)
 - [What is React Component](https://drag13.io/react-learning-course-short/react-components)
 - [React with Hooks](https://drag13.io/react-learning-course-short/react-hooks)
 - [Building React Component](https://drag13.io/react-learning-course-short/react-new-component)
