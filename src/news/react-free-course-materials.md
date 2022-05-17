@@ -13,6 +13,7 @@ As you already know, on April I started working on the free React Course for Beg
 - [React and network](https://drag13.io/react-learning-course-short/react-network)
 - [UI libraries](https://drag13.io/react-learning-course-short/react-ui-lib)
 - [Tests](https://drag13.io/react-learning-course-short/react-testing)
+- [TypeScript](https://drag13.io/react-learning-course-short/typescript-intro)
 
 What is even more exiting, I've opened the [YouTube channel](https://www.youtube.com/channel/UCg-txtmOEQ8BniR8008O1mA) where I am giving talks based on this topics. Right now all talks are in Ukrainian (I am Ukrainian, you remember this, right?), but I have some plans about translations.
 
