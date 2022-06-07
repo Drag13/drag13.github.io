@@ -2,6 +2,6 @@ Hi all! Interested in creating a faster web? Subscribe to my [Twitter bot](https
 
 Built using #Azure and Azure Logic Apps with 0 lines of code.
 
-<a href="https://twitter.com/webpbot?s=20"><img class="img" height="200px" alt="webpbot twitter-bot web performance" src="./news/twtbot.jpg" lazy="true"/></a>
+<a href="https://twitter.com/webpbot?s=20"><img class="img" height="200px" alt="webpbot twitter-bot web performance" src="./news/twtbot.jpg" loading="lazy"/></a>
 
 [Let's make the web faster!](https://twitter.com/webpbot?s=20)

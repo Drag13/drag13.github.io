@@ -9,7 +9,8 @@ block variables
   - var img = '~/img/main.png'
 
 block page-styles
-  link(rel="stylesheet", href="~/styles/landing.less")
+  style 
+    include:less /styles/landing.less
 
 block content
     h1 Blog about JavaScript, performance and security
