@@ -7,7 +7,7 @@ Under the hood it uses
 * [Parcel](https://parceljs.org) for bundling
 * [Travis-CI](https://travis-ci.org/) for CI/CD
 
-Check [https://drag.io](https://drag.io) for the content or my [twitter](https://twitter.com/137)!
+Check [https://drag.io](https://drag.io) for the content or my [twitter](https://twitter.com/drag137)!
 
 Latest articles:
 
