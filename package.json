@@ -31,7 +31,7 @@
     "jstransformer-markdown-it": "^2.1.0",
     "less": "^3.13.1",
     "marked": "^2.0.7",
-    "parcel": "^1.12.4",
+    "parcel": "^2.8.2",
     "parcel-plugin-imagemin": "^4.0.2",
     "prismjs": "^1.24.0",
     "pug": "^3.0.2"
