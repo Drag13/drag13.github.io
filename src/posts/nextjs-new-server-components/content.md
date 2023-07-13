@@ -1,8 +1,8 @@
 # NextJs and new Server Somponents - How to use and limitations
 
-Hello everyone, recently I have spent a lot of time dealing with the new feature in Next.js - server components, and now I want to share my experience and some thoughts about this update, including the benefits, limitations, and how to use them in real-life scenarios.
+Hello everyone, recently I have spent a lot of time dealing with the new feature in [Next.JS](https://nextjs.org/) - server components, and now I want to share my experience and some thoughts about this update, including the benefits, limitations, and how to use them in real-life scenarios.
 
-If you are interested in Next.js or web performance in general, grab a cup of coffee and let's start reading!
+If you are interested in Next.JS or web performance in general, grab a cup of coffee and let's start reading!
 
 ## Why were server components introduced?
 
@@ -12,7 +12,7 @@ As you probably already know, Next.JS works as follows (simplified):
 
 - The client requests the address served by the Next.JS server.
 - Next.JS, at runtime (optimizations with caching may occur), receives the necessary data to create the page.
-- Then, it creates an HTML page that is sent to the client, along with the JS code. Since the page is just plain HTML, the user sees it as it loads and, unlike SPA, doesn't have to wait for React to create it from scratch on the client-side.
+- Then, it creates an HTML page that is sent to the client, along with the javascript code. Since the page is just plain HTML, the user sees it as it loads and, unlike SPA, doesn't have to wait for React to create it from scratch on the client-side.
 - After receiving the client bundle, the hydration process takes place - transforming static HTML into the familiar React application that the user can interact with. If hydration is not performed, the user won't be able to interact with the HTML page because all event listeners are added at this stage
 
 Schematically this looks something like this:
@@ -30,7 +30,8 @@ And here come the server components to the rescue, which try to solve both probl
 - **Dependencies used in server components are not included in the bundle at all**. This reduces its size and speeds up the moment when your page becomes interactive.
 
 - **Server components do not participate in either hydration or the application lifecycle**, which speeds up the application's response time (giving more time for other operations) and saves your phone's battery.
-  Of course, such magic is not free, so server components have significant limitations (some of which almost completely negate their usefulness).
+
+Of course, such magic is not free, so server components have significant limitations (some of which almost completely negate their usefulness, at least for now).
 
 ## Rules and limitations of server components
 
@@ -42,7 +43,7 @@ Also, server components cannot use context, which means that many familiar tools
 
 **The third rule of server components** is that importing a server component to the client automatically transforms it into a client component, thereby depriving it of all the advantages I mentioned above. This moment is very important, so I emphasize it again: any server components imported into a client component are automatically converted into client components. This effect is transitive - sub-components also become client components automatically, and so on until the last component in the hierarchy.
 
-The practical consequence of this is that if you add the "use-client" directive to your root component (such as a page), all its imports and the imports of their imports will automatically be converted to client components, which will still be rendered on the server-side but lose the benefits of server components, such as reduced bundle size and avoiding re-rendering; therefore, the "use-client" directive should be used as low in the import hierarchy as possible, or alternatively, you can use children in client components, as long as the composing component is a server component because there is no direct import.
+The practical consequence of this is that if you add the `"use-client"` directive to your root component (such as a page), all its imports and the imports of their imports will automatically be converted to client components, which will still be rendered on the server-side but lose the benefits of server components, such as reduced bundle size and avoiding re-rendering; therefore, the `"use-client"` directive should be used as low in the import hierarchy as possible, or alternatively, you can use children in client components, as long as the composing component is a server component because there is no direct import.
 
 **Finally, the fourth rule of server components** is that they can be asynchronous and can receive data directly in the component body, without any useEffect. Then, this data can be processed and passed to the client components, which can create context and add some interaction. And for handling errors that occur during asynchronous operations, you can add an error.jsx/tsx file. This is quite convenient and slightly improves the impression of all previous limitations, but not much.
 
@@ -52,12 +53,10 @@ In summary, the technology of server components has the potential to make your a
 
 Thanks for the attention!
 
-## UPDATE 
+## UPDATE
 
 [Material UI](https://github.com/mui/material-ui/releases/tag/v5.14.0) version 5.14.0 has announced support for the new app router in Next.js and updated their guides:
 
 ![./mui.png](./mui.png)
 
-
-
-
+Hopefully, we will see some progress with other tools soon
