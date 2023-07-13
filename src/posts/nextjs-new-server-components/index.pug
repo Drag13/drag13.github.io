@@ -1,0 +1,12 @@
+extends ../_layout
+
+block variables
+  - var title = 'Nextjs New Server Components'
+  - var description = 'DESCRIPTION'
+  - var keywords = 'KEYWORDS'
+  - var canonical = 'https://drag13.io/posts/nextjs-new-server-components/index.html'
+
+block content
+  article.post
+    include:highlight:markdown-it(html) content.md
+    p.tag [14.08.2023] #nextjs #next #react #servercomponents #performance
