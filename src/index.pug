@@ -15,6 +15,14 @@ block page-styles
 block content
     h1 Blog about JavaScript, performance and security
 
+    +pp(
+      ['nextjs', 'server-components','react','performance'],
+      'Next.JS and new React Server Components - How to Use and Caveats',
+      'Recently I have spent a lot of time dealing with the new feature in Next.js - server components, and now I want to share my experience and some thoughts about this update, including the benefits, limitations, and how to use them in real-life scenarios.',
+      './posts/nextjs-new-server-components/index.pug',
+      null,
+    )
+
     +news(['ukraine', 'react', "learning"], 'All materials for the new course React For Beginners have been published!')
       include:markdown-it(html) ./news/react-free-course-materials.md
 
