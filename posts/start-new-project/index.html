@@ -1,0 +1,181 @@
+<!DOCTYPE html><html lang="en" prefix="og: http://ogp.me/ns#"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; object-src 'none'; style-src 'self' 'unsafe-inline';"><title>How to start a new JavaScript project with automated formatting, linting, testing, and documentation</title><meta property="og:title" content="How to start a new JavaScript project with automated formatting, linting, testing, and documentation"><meta name="description" content="Creating a new JavaScript/TypeScript project from scratch with linting, formatting, testing, and documentation. Best practices, guidelines, examples"><meta property="og:description" content="Creating a new JavaScript/TypeScript project from scratch with linting, formatting, testing, and documentation. Best practices, guidelines, examples"><meta name="keywords" content="javascript, typescript, new project, automation, testing, documentation, linting, formatting, prettier, editorconfig, karma, jasmine, commitizen, husky"><link rel="canonical" href="https://drag13.io/posts/start-new-project/index.html"><meta property="og:url" content="https://drag13.io/posts/start-new-project/index.html"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="https://twitter.com/drag137"><meta name="twitter:url" content="https://drag13.io/posts/start-new-project/index.html"><meta name="twitter:title" content="How to start a new JavaScript project with automated formatting, linting, testing, and documentation"><meta name="twitter:description" content="Creating a new JavaScript/TypeScript project from scratch with linting, formatting, testing, and documentation. Best practices, guidelines, examples"><meta name="og:site_name" content="Drag13 Dev Blog"><meta name="application-name" content="Drag13 programmer's blog"><meta name="author" content="Drag13"><meta name="robots" content="index follow"><meta name="application-name" content="Drag13 Dev Blog"><link rel="stylesheet" href="https://drag13.io/common.31d0b71a.css"><style>code[class*=language-],pre[class*=language-]{color:#000;background:none;text-shadow:0 1px #fff;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-]::-moz-selection,code[class*=language-] ::-moz-selection,pre[class*=language-]::-moz-selection,pre[class*=language-] ::-moz-selection{text-shadow:none;background:#b3d4fc}code[class*=language-]::selection,code[class*=language-] ::selection,pre[class*=language-]::selection,pre[class*=language-] ::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#9a6e3a;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.post .tag{color:#757575}</style><link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://drag13.io/apple-touch-icon-144x144.f6d9dce4.png"><link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://drag13.io/apple-touch-icon-152x152.5c0b4e01.png"><link rel="icon" type="image/png" href="https://drag13.io/favicon-32x32.2ff4c37a.png" sizes="32x32"><link rel="icon" type="image/png" href="https://drag13.io/favicon-16x16.60caff07.png" sizes="16x16"><link rel="manifest" crossorigin="use-credentials" href="https://drag13.io/manifest.webmanifest"><body><nav class="nav"><a class="link" href="/" title="Back to the main page">Home</a><div><a class="icon" href="https://github.com/Drag13" target="_blank" rel="noopener" title="Drag13 GitHub profile"><svg height="32" viewBox="0 0 16 16" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="icon" href="https://twitter.com/drag137" target="_blank" rel="noopener" title="Drag13 Twitter profile"><svg height="32" width="32" viewBox="0 0 24 24" aria-hidden="true" fill="rgba(29,161,242,1.00)"><path d="M23.643 4.937c-.835.37-1.732.62-2.675.733a4.67 4.67 0 002.048-2.578 9.3 9.3 0 01-2.958 1.13 4.66 4.66 0 00-7.938 4.25 13.229 13.229 0 01-9.602-4.868c-.4.69-.63 1.49-.63 2.342A4.66 4.66 0 003.96 9.824a4.647 4.647 0 01-2.11-.583v.06a4.66 4.66 0 003.737 4.568 4.692 4.692 0 01-2.104.08 4.661 4.661 0 004.352 3.234 9.348 9.348 0 01-5.786 1.995 9.5 9.5 0 01-1.112-.065 13.175 13.175 0 007.14 2.093c8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602a9.47 9.47 0 002.323-2.41z"/></svg></a></div></nav><main class="main"><div class="content markdown-body"><article><h1>How to start a new JavaScript project with automated formatting, linting, testing, and documentation</h1>
+<p>Keeping your code consistent and well-formatted not an easy task even when you work alone. But when you work with a team or with open source projects all start getting even harder. Everyone has their own code style, someone doesn't run tests, and no one writes documentation. This article will help you to set up all these things and even more - automate this routine to never do it manually.</p>
+<p>After reading you will get your own npm-ready project with the next features:</p>
+<ul>
+<li>Text formatting and code style</li>
+<li>Automated tests with code coverage and threshold</li>
+<li>Unified commit style</li>
+<li>Documentation generated from the code and commits</li>
+<li>Automated publish process</li>
+</ul>
+<p>Let's go!</p>
+<h2>Prerequisites</h2>
+<p>Create a new folder, initialize new repository and project and go to the next step.</p>
+<pre><code class="language-cmd"><span class="token function">git</span> init
+<span class="token function">npm</span> init
+<span class="token function">npm</span> i <span class="token parameter variable">-D</span> typescript
+./node_modules/.bin/tsc <span class="token parameter variable">--init</span>
+</code></pre>
+<h2>Code Formatting</h2>
+<p>Let's start with code formatting - indention types, size and so on. First tool is <a href="https://editorconfig.org/">.editorconfig</a> file. It is recognized with most of IDE and helps to keep your autoformatting consistent across different IDEs and users.</p>
+<p>Create .editorconfig in the root of the project with next content (feel free to change it for your desired style)</p>
+<pre><code class="language-yml">#root = true
+
+[*]
+indent_style = space
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+max_line_length = 100
+indent_size = 4
+
+[*.md]
+trim_trailing_whitespace = false
+</code></pre>
+<p>But sometimes autoformatting can be not used. To ensure that all is well formatted <a href="https://github.com/prettier/prettier">prettier</a> appears. If you forget to format the code, prettier will do it for you.</p>
+<pre><code class="language-cmd"><span class="token function">npm</span> i <span class="token parameter variable">-D</span> prettier
+</code></pre>
+<p>Add this command to the scripts section your package.json file</p>
+<pre><code class="language-json"><span class="token property">"prettier"</span><span class="token operator">:</span> <span class="token string">"prettier --config .prettierrc.json --write src/**/*.ts"</span>
+</code></pre>
+<p>And add .prettierrc.json file with your settings to the root of the project</p>
+<pre><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"tabWidth"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+    <span class="token property">"useTabs"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"semi"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"singleQuote"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"trailingComma"</span><span class="token operator">:</span> <span class="token string">"es5"</span><span class="token punctuation">,</span>
+    <span class="token property">"arrowParens"</span><span class="token operator">:</span> <span class="token string">"always"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Now you can write some code and try run "npm run prettier". Prettier will check src folder and autoformat your code without any help!</p>
+<h2>Code Style</h2>
+<p>Code style - like avoiding using == instead of === or shadowing variables also needs to be check. For this purpose, we will take <a href="https://palantir.github.io/tslint/">tslint</a>. If you prefer javascript - take <a href="https://eslint.org/">eslint</a> instead.</p>
+<pre><code class="language-cmd"><span class="token function">npm</span> i <span class="token parameter variable">-D</span> tslint
+./node_modules/.bin/tslint <span class="token parameter variable">--init</span>
+</code></pre>
+<p>The last command will create tslint.json for you. It already extends tslint:recommended set of rules, but you can extend or override them whatever you want. Don't forget to add lint command to your package.json.</p>
+<p>package.json</p>
+<pre><code class="language-json"><span class="token property">"lint"</span><span class="token operator">:</span> <span class="token string">"tslint -c tslint.json 'src/**/*.ts' 'tests/**/*.spec.ts'"</span>
+</code></pre>
+<p>As you see it setup to work with src and tests folder, so all your code should be placed there.</p>
+<h2>Testing</h2>
+<p>Now it is time to set up our tests. Install karma and other related dependencies</p>
+<pre><code class="language-cmd"><span class="token function">npm</span> i <span class="token parameter variable">-D</span> karma karma-jasmine jasmine karma-typescript karma-chrome-launcher @types/jasmine
+./node_modules/.bin/karma init
+</code></pre>
+<p>And add new configuration block to newly created karma.conf.js</p>
+<pre><code class="language-js"><span class="token literal-property property">karmaTypescriptConfig</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">include</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"./src/**/*.ts"</span><span class="token punctuation">,</span> <span class="token string">"./tests/**/*.spec.ts"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">tsconfig</span><span class="token operator">:</span> <span class="token string">"./tsconfig.json"</span><span class="token punctuation">,</span>
+
+    <span class="token literal-property property">reports</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string-property property">"html"</span><span class="token operator">:</span> <span class="token string">"coverage"</span><span class="token punctuation">,</span>
+        <span class="token string-property property">"lcovonly"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">directory</span><span class="token operator">:</span> <span class="token string">'./coverage'</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">'../lcov.dat'</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">coverageOptions</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">threshold</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">global</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token literal-property property">statements</span><span class="token operator">:</span> <span class="token number">60</span><span class="token punctuation">,</span>
+                <span class="token literal-property property">branches</span><span class="token operator">:</span> <span class="token number">60</span><span class="token punctuation">,</span>
+                <span class="token literal-property property">functions</span><span class="token operator">:</span> <span class="token number">60</span><span class="token punctuation">,</span>
+                <span class="token literal-property property">lines</span><span class="token operator">:</span> <span class="token number">60</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token literal-property property">file</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token literal-property property">statements</span><span class="token operator">:</span> <span class="token number">60</span><span class="token punctuation">,</span>
+                <span class="token literal-property property">branches</span><span class="token operator">:</span> <span class="token number">60</span><span class="token punctuation">,</span>
+                <span class="token literal-property property">functions</span><span class="token operator">:</span> <span class="token number">60</span><span class="token punctuation">,</span>
+                <span class="token literal-property property">lines</span><span class="token operator">:</span> <span class="token number">60</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>This will setup code-coverage file and threshold level. Both are important. First one helps you to deal with your coverage and the second one keeps your coverage on a certain level.</p>
+<p>Update package.json</p>
+<pre><code class="language-json"><span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"karma start"</span>
+</code></pre>
+<p>And try to run it. Don't forget to write some code inside src folder and tests inside the tests folder.</p>
+<p>Btw, if you plan to use continuous integration (like Travis, Jenkins or so on) it is better to change Chrome runner to HeadlessChrome with <a href="https://github.com/GoogleChrome/puppeteer">puppeteer</a>. For more information about HeadlessChrome and CI - check my demo <a href="https://github.com/Drag13/IsNumberStrict">repository</a> on GitHub.</p>
+<h2>Commit Style</h2>
+<p>Usually, all write commits in some "random" format. So, to keep commits good enough, <a href="https://github.com/commitizen/cz-cli">commitizen</a> was invented. This tool prompt a few questions and generate commit for you. Another good point that we can generate changelog file from commits written with help of commitizen.</p>
+<p>Install commitizen and conventional-changelog adapter</p>
+<pre><code class="language-cmd"><span class="token function">npm</span> i <span class="token parameter variable">-D</span> commitizen
+<span class="token function">npm</span> i <span class="token parameter variable">-D</span> cz-conventional-changelog
+</code></pre>
+<p>Update scripts</p>
+<pre><code class="language-json"><span class="token property">"commit"</span><span class="token operator">:</span><span class="token string">"git-cz"</span>
+</code></pre>
+<p>Add new configuration section inside package.json for commitizen.</p>
+<pre><code class="language-json"><span class="token property">"config"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"commitizen"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">"path"</span><span class="token operator">:</span> <span class="token string">"./node_modules/cz-conventional-changelog"</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h2>Documentation</h2>
+<p>If your project is bigger than a few functions it as a good idea to have some documentation. And it is even better when you don't need to write something manually. For that purposes <a href="https://www.npmjs.com/package/typedoc">typedoc</a> exists. It takes your .ts files, your jsdoc comments and creates nice and shiny documentation. If you are using javascript - you can try <a href="https://esdoc.org/">esdoc</a> instead.</p>
+<pre><code class="language-cmd"><span class="token function">npm</span> i <span class="token parameter variable">-D</span> typedoc
+</code></pre>
+<p>package.json</p>
+<pre><code class="language-json"><span class="token property">"doc"</span><span class="token operator">:</span> <span class="token string">"typedoc --out docs/src"</span>
+</code></pre>
+<p>Another good idea is to make your changelog file autogenerated too. As I mentioned before, commitizen supports conventional-changelog. So, we can take commits and convert them to the changelog file.</p>
+<p>Install <a href="https://www.npmjs.com/package/conventional-changelog-cli">conventional-changelog-cli</a></p>
+<pre><code class="language-cmd"><span class="token function">npm</span> i <span class="token parameter variable">-D</span> conventional-changelog-cli
+</code></pre>
+<p>And update package.json with the new command</p>
+<pre><code class="language-json"><span class="token property">"changelog"</span><span class="token operator">:</span> <span class="token string">"conventional-changelog -p angular -i CHANGELOG.md -s"</span>
+</code></pre>
+<p>Don't worry, angular means only style formatting and nothing more.</p>
+<h2>Build</h2>
+<p>The build is quite simple and it is just a matter to add build and clean commands to the package.json</p>
+<pre><code class="language-json"><span class="token property">"clean"</span><span class="token operator">:</span><span class="token string">"rmdir dist /S /Q"</span><span class="token punctuation">,</span>
+<span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"tsc --p ./ --sourceMap false"</span><span class="token punctuation">,</span>
+</code></pre>
+<p>If you need bundling or minification - try <a href="https://www.npmjs.com/package/uglify-js">uglifyjs</a>.</p>
+<h2>Automation</h2>
+<p>Ok, the most part already done. We created a bunch of different scripts to keep our code clean and correct. But running them each time manually is a quite boring task and can lead to mistakes. So, we need to automate them. As you know, when you make a commit few git events appear - pre-commit, post-commit and so on. We can use them to run our own scripts before the code will be committed or pushed. But there is a problem - git hooks are not shareable. And that's why <a href="https://www.npmjs.com/package/husky">husky</a> appears. This package wraps the git events and runs your scripts from package.json. If the script fails, commit will be canceled and you will get the message what's going wrong.</p>
+<p>Install husky</p>
+<pre><code class="language-cmd"><span class="token function">npm</span> i <span class="token parameter variable">-D</span> husky
+</code></pre>
+<p>And describe some hooks inside package.json</p>
+<pre><code class="language-json"><span class="token property">"precommit"</span><span class="token operator">:</span><span class="token string">"npm run prettier"</span><span class="token punctuation">,</span>
+<span class="token property">"prepush"</span><span class="token operator">:</span> <span class="token string">"call npm run lint &amp;&amp; call npm run test"</span>
+</code></pre>
+<p>Now, when you try to make a commit prettier will run and fix all formatting issues. When you try to make a push - code style and tests will be done automatically. You can extend this commands whatever you need like sending notifications, extra check etc.</p>
+<h2>Publish</h2>
+<p>Great, we are almost done. So, let's say we are ready to publish the package to npm. As you know, much work should be done before - tests, documentation update, version, and tags update. Easy to forget something, yeah? So, it is a good idea to automate this process too. For that purposes, we will use native npm hooks - preversion, version, and postversion. Add next lines to scripts section your package.json</p>
+<pre><code class="language-json"><span class="token property">"preversion"</span><span class="token operator">:</span> <span class="token string">"npm run test"</span><span class="token punctuation">,</span>
+<span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"call npm run clean &amp;&amp; call npm run build &amp;&amp; call npm run doc &amp;&amp; call npm run changelog &amp;&amp; git add . &amp;&amp; git commit -m 'changelogupdate' --no-verify"</span><span class="token punctuation">,</span>
+<span class="token property">"postversion"</span><span class="token operator">:</span> <span class="token string">"git add . &amp;&amp; git push &amp;&amp; git push --tags"</span>
+</code></pre>
+<p>When you will run npm version command, preversion script will run tests, version script will build your code and generate all documents. Then version will be increased and then all will be commited and pushed out. Now all you need is to run npm publish command and that's all. Just to commands and everything else will be done without any efforts from your side.</p>
+<p>At last, we need to specify what folders should be included in the project and where entry point can be located. Update package.json last time</p>
+<pre><code class="language-json"><span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"./dist/index.min.js"</span><span class="token punctuation">,</span>
+<span class="token property">"types"</span><span class="token operator">:</span> <span class="token string">"./dist/index.d.ts"</span><span class="token punctuation">,</span>
+<span class="token property">"files"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">"dist/"</span><span class="token punctuation">,</span>
+        <span class="token string">"src/"</span><span class="token punctuation">,</span>
+        <span class="token string">"tests/"</span>
+    <span class="token punctuation">]</span>
+</code></pre>
+<p>That's all, your awesome project is ready to go! Thanks for reading. If you have questions, please check my demo project <a href="https://github.com/Drag13/IsNumberStrict">here</a>.</p>
+<h2>Useful links</h2>
+<ul>
+<li><a href="https://editorconfig.org/">.editorconfig</a></li>
+<li><a href="https://github.com/prettier/prettier">prettier</a></li>
+<li><a href="https://palantir.github.io/tslint/">tslint</a></li>
+<li><a href="https://eslint.org/">eslint</a></li>
+<li><a href="https://www.npmjs.com/package/typedoc">typedoc</a></li>
+<li><a href="https://esdoc.org/">esdoc</a></li>
+<li><a href="https://github.com/commitizen/cz-cli">commitizen</a></li>
+<li><a href="https://www.npmjs.com/package/conventional-changelog-cli">conventional-changelog-cli</a></li>
+<li><a href="https://www.npmjs.com/package/husky">husky</a></li>
+<li><a href="https://github.com/Drag13/IsNumberStrict">demo</a></li>
+</ul>
+<p class="tag">#karma #jasmine #commitizen #husky #javascript #typescript</p></article></div></main><footer class="footer"><a href="https://github.com/Drag13/drag13.github.io/blob/development/LICENSE" rel="noopener" target="_blank" title="License">2023 MIT by Drag13</a></footer></body></html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="en" prefix="og: http://ogp.me/ns#"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; object-src 'none'; style-src 'self' 'unsafe-inline';"><title>How to use React without unsafe-inline runtime chunk and why</title><meta property="og:title" content="How to use React without unsafe-inline runtime chunk and why"><meta name="description" content="Removing unsafe-inline chunk from React application is easy and will help you to protect your customers with content-security-policy header"><meta property="og:description" content="Removing unsafe-inline chunk from React application is easy and will help you to protect your customers with content-security-policy header"><meta name="keywords" content="react, csp, security, content-security-policy, remove unsafe-inline, react inline chunk, INLINE_RUNTIME_CHUNK, IMAGE_INLINE_SIZE_LIMIT"><link rel="canonical" href="https://drag13.io/posts/react-inline-runtimer-chunk/index.html"><meta property="og:url" content="https://drag13.io/posts/react-inline-runtimer-chunk/index.html"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="https://twitter.com/drag137"><meta name="twitter:url" content="https://drag13.io/posts/react-inline-runtimer-chunk/index.html"><meta name="twitter:title" content="How to use React without unsafe-inline runtime chunk and why"><meta name="twitter:description" content="Removing unsafe-inline chunk from React application is easy and will help you to protect your customers with content-security-policy header"><meta name="og:site_name" content="Drag13 Dev Blog"><meta property="og:image" content="https://drag13.io/react-security.190c08cd.png"><meta name="twitter:image" content="https://drag13.io/react-security.190c08cd.png"><meta name="application-name" content="Drag13 programmer's blog"><meta name="author" content="Drag13"><meta name="robots" content="index follow"><meta name="application-name" content="Drag13 Dev Blog"><link rel="stylesheet" href="https://drag13.io/common.31d0b71a.css"><style>code[class*=language-],pre[class*=language-]{color:#000;background:none;text-shadow:0 1px #fff;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-]::-moz-selection,code[class*=language-] ::-moz-selection,pre[class*=language-]::-moz-selection,pre[class*=language-] ::-moz-selection{text-shadow:none;background:#b3d4fc}code[class*=language-]::selection,code[class*=language-] ::selection,pre[class*=language-]::selection,pre[class*=language-] ::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#9a6e3a;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.post .tag{color:#757575}</style><link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://drag13.io/apple-touch-icon-144x144.f6d9dce4.png"><link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://drag13.io/apple-touch-icon-152x152.5c0b4e01.png"><link rel="icon" type="image/png" href="https://drag13.io/favicon-32x32.2ff4c37a.png" sizes="32x32"><link rel="icon" type="image/png" href="https://drag13.io/favicon-16x16.60caff07.png" sizes="16x16"><link rel="manifest" crossorigin="use-credentials" href="https://drag13.io/manifest.webmanifest"><body><nav class="nav"><a class="link" href="/" title="Back to the main page">Home</a><div><a class="icon" href="https://github.com/Drag13" target="_blank" rel="noopener" title="Drag13 GitHub profile"><svg height="32" viewBox="0 0 16 16" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="icon" href="https://twitter.com/drag137" target="_blank" rel="noopener" title="Drag13 Twitter profile"><svg height="32" width="32" viewBox="0 0 24 24" aria-hidden="true" fill="rgba(29,161,242,1.00)"><path d="M23.643 4.937c-.835.37-1.732.62-2.675.733a4.67 4.67 0 002.048-2.578 9.3 9.3 0 01-2.958 1.13 4.66 4.66 0 00-7.938 4.25 13.229 13.229 0 01-9.602-4.868c-.4.69-.63 1.49-.63 2.342A4.66 4.66 0 003.96 9.824a4.647 4.647 0 01-2.11-.583v.06a4.66 4.66 0 003.737 4.568 4.692 4.692 0 01-2.104.08 4.661 4.661 0 004.352 3.234 9.348 9.348 0 01-5.786 1.995 9.5 9.5 0 01-1.112-.065 13.175 13.175 0 007.14 2.093c8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602a9.47 9.47 0 002.323-2.41z"/></svg></a></div></nav><main class="main"><div class="content markdown-body"><article class="post"><h1>How to use React without unsafe-inline and why</h1>
+<p><img src="https://drag13.io/react-security.190c08cd.png" alt="react and content-security-policy"></p>
+<p>React.JS is an awesome library that widely used all over the world. However, it also contains some pitfalls that might negatively impact your application. And here I want to discuss one of such pitfalls - inlined runtime chunk that might prevent you from correct using one of the most useful security header - Content-Security-Policy.</p>
+<h2>Identifing the issue</h2>
+<p>Let's start. If you have ever opened the output index.html, you've probably already seen something like this:</p>
+<pre><code class="language-html">...
+<span class="token comment">&lt;!--index.html--&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>root<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript"><span class="token operator">!</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">function</span> <span class="token function">r</span><span class="token punctuation">(</span><span class="token parameter">r</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> n<span class="token punctuation">,</span> l<span class="token punctuation">,</span> f <span class="token operator">=</span> r<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> i <span class="token operator">=</span> r<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> a <span class="token operator">=</span> r<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> c <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> s <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span> c <span class="token operator">&lt;</span> f<span class="token punctuation">.</span>length<span class="token punctuation">;</span> c<span class="token operator">++</span><span class="token punctuation">)</span>l <span class="token operator">=</span> f<span class="token punctuation">[</span>c<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>o<span class="token punctuation">,</span> l<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> o<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>o<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> o<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/static/js/2.1478fb8e.chunk.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+...
+</code></pre>
+<p>What is this first piece of code? It is a small chunk of webpack runtime logic which is used to load and run your application. It is safe (at least for now), already optimized, and minified. If you remove or alter it, your application will be broken. Despite all of this, the fact it uses an inline technique might bring you some trouble if you start improving your application with <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content-Security-Policy</a> HTTP header. For those, who already CSP Header, the problem should be obvious, but if you are not familiar with this technique, I will explain a bit more.</p>
+<p>A long time ago when <a href="https://en.wikipedia.org/wiki/Netscape_Navigator">netscape</a> was young, we didn't have any mechanism to define trusted sources browser may use safely. If the browser see the script tag, it evaluates it and executes it. If the browser see a script with src, it loads it and executs it. If the browser see an image ... you understand, it loads image and renders it. Despite (or because) the simplicity, this behavior opens door to some troubles like <a href="https://developer.mozilla.org/en-US/docs/Glossary/Cross-site_scripting">XSS</a>.</p>
+<p>However, times changed. Nowadays we can control what sources are trusted and what resources can be used by the browser. This is done by the HTTP Header named Content-Security-Policy. This header defines whitelists the trusted sources:</p>
+<pre><code>Content-Security-Policy: default-src 'self';
+</code></pre>
+<p>In this example, the server, using Content-Security-Policy header, dictates to the browser to use resources only from the same domain index.html was loaded from. If an attacker will find XSS vulnerability and embed some script inside the page, the browser will refuse to load it, because loading scripts from other domains already forbidden. And if attacked embed plain javascript on the page, payload will also not work. Because inline resources required special permission - unsafe-inline.</p>
+<pre><code>Content-Security-Policy: default-src 'self'; script-src 'unsafe-inline';
+</code></pre>
+<p>This header is so cool, that it can also forbidd <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval">eval</a> which makes this header really great against different types of injection-based attacks. If you are interested in some details, here you can find more about Content-Security-Policy and some other useful security headers - <a href="https://drag13.io/posts/security-headers/index.html">https://drag13.io/posts/security-headers</a>.</p>
+<p>Now you should see the issue. If you decide to protect your site with CSP-Header (and I highly recommend doing this), you will have to allow unsafe-inline, because, in another case, React will just not work. Which in turn, leaves the door open to other, potentially malicious, inlinings.</p>
+<h2>Making the decision</h2>
+<p>Now, when you see the issue, what can you do?</p>
+<ul>
+<li>Use <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/script-src">nonce</a> attribute. However it requires some backend (nonce should be cryptographically secure random token) and Edge had some bugs related to it. So this might be plan B.</li>
+<li>Opt-out from using unsafe runtime script inlining. The good news is that this option is already supported with INLINE_RUNTIME_CHUNK variable and it is quite easy to set up it. To use react without unsafe inline code, you need set <code>INLINE_RUNTIME_CHUNK</code> to false, like here:</li>
+</ul>
+<pre><code class="language-json"><span class="token comment">/*package.json*/</span>
+<span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"(SET INLINE_RUNTIME_CHUNK=false) &amp;&amp; react-scripts build"</span><span class="token punctuation">,</span>
+</code></pre>
+<p>Or just use add INLINE_RUNTIME_CHUNK=false to the <a href="https://create-react-app.dev/docs/adding-custom-environment-variables/">.env</a> file. Now your inlined chunk will be moved out of the index.html. However this is not end. Except runtime chunk, react also inlines images that are smaller then 10kB. Inlined images are also forbidden by default with CSP header. You may leave this or setup React not to include images inside the bundle. Just add
+<code>IMAGE_INLINE_SIZE_LIMIT=0</code> to your .env file and that's it.</p>
+<p>Now you can use React.JS application with CSP header without unsafe-inline (of course if you don't have other inlined code).</p>
+<p>But what about performance? When we move the runtime-chunk out from the index.html, doesn't it slow the application loading? I was also wondering about this. So, I created a simple web application in Azure (B1 tier actually), built default React application, and did a couple of tests with <a href="https://www.npmjs.com/package/perfrunner">perfrunner</a>. And here is what I've found</p>
+<h2>Profiling</h2>
+<h3>First visit</h3>
+<p><img src="https://drag13.io/first-visit.b0e415d3.png" alt="chart with first visit test"></p>
+<h3>Cache enabled</h3>
+<p><img src="https://drag13.io/cache-enabled.214a8e00.png" alt="chart with caching test"></p>
+<p>As you can see, allmost no difference appears. If you prefer to check raw numbers, here are the results:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>3G first-visit</th>
+<th></th>
+<th>4G first-visit</th>
+<th></th>
+<th>3G cache</th>
+<th></th>
+<th>4G cache</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>FCP</td>
+<td>LCP</td>
+<td>FCP</td>
+<td>LCP</td>
+<td>FCP</td>
+<td>LCP</td>
+<td>FCP</td>
+<td>LCP</td>
+</tr>
+<tr>
+<td>Inlined</td>
+<td>1532</td>
+<td>2126</td>
+<td>307</td>
+<td>383</td>
+<td>732</td>
+<td>732</td>
+<td>236</td>
+<td>236</td>
+</tr>
+<tr>
+<td>Cached</td>
+<td>1545</td>
+<td>2142</td>
+<td>301</td>
+<td>370</td>
+<td>729</td>
+<td>729</td>
+<td>217</td>
+<td>217</td>
+</tr>
+</tbody>
+</table>
+<p>So, from performance perspective, using fetched runtime chunk also seems safe.</p>
+<h2>Summary</h2>
+<p>Making React applications compliant with Content-Security-Policy is easy and can be done with a few simple settings in the .env file - <code>IMAGE_INLINE_SIZE_LIMIT</code> and <code>INLINE_RUNTIME_CHUNK</code>. Despite the simplicity, it still requires careful verification of everything connected to the security.</p>
+<p>Hope this helps,</p>
+<p>// <a href="https://drag13.io/">Drag13</a></p>
+<p class="tag">07.07.2020 #react, #security, #content-security-policy</p></article></div></main><footer class="footer"><a href="https://github.com/Drag13/drag13.github.io/blob/development/LICENSE" rel="noopener" target="_blank" title="License">2023 MIT by Drag13</a></footer></body></html>
