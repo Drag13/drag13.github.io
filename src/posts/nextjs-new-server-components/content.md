@@ -1,4 +1,4 @@
-# NextJs and new Server Somponents - How to use and limitations
+# NextJs and new Server Components - How to use and limitations
 
 Hello everyone, recently I have spent a lot of time dealing with the new feature in [Next.JS](https://nextjs.org/) - server components, and now I want to share my experience and some thoughts about this update, including the benefits, limitations, and how to use them in real-life scenarios.
 
