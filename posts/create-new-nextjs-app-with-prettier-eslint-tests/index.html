@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang="en" prefix="og: http://ogp.me/ns#"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; object-src 'none'; style-src 'self' 'unsafe-inline';"><title>NextJS with prettier, eslint, husky and test - short guide</title><meta property="og:title" content="NextJS with prettier, eslint, husky and test - short guide"><meta name="description" content="Learn how to create a Next.js app with Prettier, ESLint, Husky, Jest, and deploy it on Azure. This guide covers setting up a new project, configuring Prettier and ESLint, using Husky for pre-commit hooks, writing tests with Jest, and deploying to Azure. Enhance your development experience and optimize your app for production"><meta property="og:description" content="Learn how to create a Next.js app with Prettier, ESLint, Husky, Jest, and deploy it on Azure. This guide covers setting up a new project, configuring Prettier and ESLint, using Husky for pre-commit hooks, writing tests with Jest, and deploying to Azure. Enhance your development experience and optimize your app for production"><meta name="keywords" content="nextjs, react, new-project, how-to, prettier, eslint, husky"><link rel="canonical" href="https://drag13.io/posts/create-new-nextjs-app-with-prettier-eslint-tests/index.html"><meta property="og:url" content="https://drag13.io/posts/create-new-nextjs-app-with-prettier-eslint-tests/index.html"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="https://twitter.com/drag137"><meta name="twitter:url" content="https://drag13.io/posts/create-new-nextjs-app-with-prettier-eslint-tests/index.html"><meta name="twitter:title" content="NextJS with prettier, eslint, husky and test - short guide"><meta name="twitter:description" content="Learn how to create a Next.js app with Prettier, ESLint, Husky, Jest, and deploy it on Azure. This guide covers setting up a new project, configuring Prettier and ESLint, using Husky for pre-commit hooks, writing tests with Jest, and deploying to Azure. Enhance your development experience and optimize your app for production"><meta name="og:site_name" content="Drag13 Dev Blog"><meta name="application-name" content="Drag13 programmer's blog"><meta name="author" content="Drag13"><meta name="robots" content="index follow"><meta name="application-name" content="Drag13 Dev Blog"><link rel="stylesheet" href="https://drag13.io/common.fa446fe9.css"><style>.post .tag{color:var(--hashtag)}</style><link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://drag13.io/apple-touch-icon-144x144.f6d9dce4.png"><link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://drag13.io/apple-touch-icon-152x152.5c0b4e01.png"><link rel="icon" type="image/png" href="https://drag13.io/favicon-32x32.2ff4c37a.png" sizes="32x32"><link rel="icon" type="image/png" href="https://drag13.io/favicon-16x16.60caff07.png" sizes="16x16"><link rel="manifest" crossorigin="use-credentials" href="https://drag13.io/manifest.webmanifest"><body><nav class="nav"><a class="link" href="/" title="Back to the main page">Home</a><div><a class="icon" href="https://github.com/Drag13" target="_blank" rel="noopener" title="Drag13 GitHub profile"><svg height="32" viewBox="0 0 16 16" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="icon" href="https://twitter.com/drag137" target="_blank" rel="noopener" title="Drag13 Twitter profile"><svg height="32" width="32" viewBox="0 0 24 24" aria-hidden="true" fill="rgba(29,161,242,1.00)"><path d="M23.643 4.937c-.835.37-1.732.62-2.675.733a4.67 4.67 0 002.048-2.578 9.3 9.3 0 01-2.958 1.13 4.66 4.66 0 00-7.938 4.25 13.229 13.229 0 01-9.602-4.868c-.4.69-.63 1.49-.63 2.342A4.66 4.66 0 003.96 9.824a4.647 4.647 0 01-2.11-.583v.06a4.66 4.66 0 003.737 4.568 4.692 4.692 0 01-2.104.08 4.661 4.661 0 004.352 3.234 9.348 9.348 0 01-5.786 1.995 9.5 9.5 0 01-1.112-.065 13.175 13.175 0 007.14 2.093c8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602a9.47 9.47 0 002.323-2.41z"/></svg></a></div></nav><main class="main"><div class="content markdown-body"><article class="post"><h1>How to create and configure Next.JS v.13 application with Prettier, Eslint, Husky and Jest</h1>
+<p>This short instruction will guide you through creating a Next.js app, complete with Prettier, ESLint, Husky, and Jest configurations, and deployment on Azure. Learn how to set up a new project, configure Prettier and ESLint, use Husky for pre-commit hooks, write tests with Jest, and deploy your app to Azure for an optimized production environment.</p>
+<h2>Table of Content</h2>
+<ul>
+<li>Create new Next.JS application</li>
+<li>Setup Prettier</li>
+<li>Configure Eslint</li>
+<li>Setup Husky with LintStaged</li>
+<li>Setup tests with Jest</li>
+<li>Deployment notes</li>
+<li>Other options</li>
+</ul>
+<h2>Before you start</h2>
+<ul>
+<li>Use the console for a better debugging experience, especially for the commit and push phases with Husky.</li>
+<li>You may require extra steps depending on your needs and tools.</li>
+</ul>
+<h2>Create new project</h2>
+<ul>
+<li>Create an <strong>EMPTY</strong> remote repository (GitHub, GitLab, etc)</li>
+</ul>
+<ul>
+<li>Create s new project locally:</li>
+</ul>
+<pre><code class="language-bash">npx create-next-app@latest dev-blog
+</code></pre>
+<ul>
+<li>Connect local repo with the remote and push the master branch:</li>
+</ul>
+<pre><code class="language-bash">git remote add origin https://github.com/Drag13/NextJS-express-course-app-mirror.git
+git branch -M master
+git push -u origin master
+</code></pre>
+<ul>
+<li>Fix dev dependencies, moving them to the dev section:</li>
+</ul>
+<pre><code class="language-bash">npm i @types/node @types/react @types/react-dom eslint eslint-config-next typescript -D
+</code></pre>
+<ul>
+<li>Commit the code and push the results to the remote with <code>git push</code></li>
+</ul>
+<h2>Setup Prettier</h2>
+<ul>
+<li>Add prettier</li>
+</ul>
+<pre><code class="language-bash"> npm i prettier eslint-config-prettier eslint-plugin-prettier -D
+</code></pre>
+<ul>
+<li>Configure prettier, add <code>prettierrc.json</code> to the root</li>
+</ul>
+<pre><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"trailingComma"</span><span class="token operator">:</span> <span class="token string">"es5"</span><span class="token punctuation">,</span>
+  <span class="token property">"tabWidth"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+  <span class="token property">"semi"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token property">"singleQuote"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li>Include prettier to <code>.eslintrc.json</code></li>
+</ul>
+<pre><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"extends"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"next/core-web-vitals"</span><span class="token punctuation">,</span> <span class="token string">"prettier"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"plugins"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"prettier"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"prettier/prettier"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">"error"</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        <span class="token property">"endOfLine"</span><span class="token operator">:</span> <span class="token string">"auto"</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li>Commit the code and push the results to the remote with <code>git push</code></li>
+</ul>
+<h2>Configure EsLint</h2>
+<ul>
+<li>Install parser and plugin</li>
+</ul>
+<pre><code class="language-bash">npm i -D @typescript-eslint/parser @typescript-eslint/eslint-plugin
+</code></pre>
+<ul>
+<li>Configure EsLint to recommended</li>
+</ul>
+<pre><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"extends"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">"next/core-web-vitals"</span><span class="token punctuation">,</span>
+    <span class="token string">"eslint:recommended"</span><span class="token punctuation">,</span>
+    <span class="token string">"plugin:@typescript-eslint/recommended"</span><span class="token punctuation">,</span>
+    <span class="token string">"prettier"</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"plugins"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"prettier"</span><span class="token punctuation">,</span> <span class="token string">"@typescript-eslint"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"parser"</span><span class="token operator">:</span> <span class="token string">"@typescript-eslint/parser"</span><span class="token punctuation">,</span>
+  <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"prettier/prettier"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">"error"</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        <span class="token property">"endOfLine"</span><span class="token operator">:</span> <span class="token string">"auto"</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"root"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li>Verify the eslint with <code>npx eslint .</code></li>
+<li>Commit the code and push the results to the remote with <code>git push</code></li>
+</ul>
+<h2>Configure Husky and lint-staged</h2>
+<p>Install husky and lint-staged</p>
+<pre><code class="language-bash">npm i husky lint-staged -D
+</code></pre>
+<ul>
+<li>Add <code>lintstagedrc.json</code> to the root and configure:</li>
+</ul>
+<pre><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"**/*.ts?(x)"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"prettier --write"</span><span class="token punctuation">,</span> <span class="token string">"eslint"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"**/*.(ts)?(x)"</span><span class="token operator">:</span> <span class="token string">"npm run type-check"</span><span class="token punctuation">,</span>
+  <span class="token property">"./*.md"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"prettier --write"</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><em>Note - The first and second points are similar, but they run in parallel to speed up the process.</em></p>
+<p>Add new commands to the <code>package.json</code></p>
+<pre><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"lint-staged"</span><span class="token operator">:</span> <span class="token string">"lint-staged"</span><span class="token punctuation">,</span>
+  <span class="token property">"type-check"</span><span class="token operator">:</span> <span class="token string">"tsc --project tsconfig.json --pretty --noEmit &amp;&amp; echo "</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li>Setup the pre-commit hook with lint-staged</li>
+</ul>
+<pre><code class="language-bash">npx husky add .husky/pre-commit "npm run lint-staged"
+</code></pre>
+<ul>
+<li>Change Prettier errors to warnings (from now on, they will be fixed automatically)</li>
+</ul>
+<p>.eslintrc.json:</p>
+<pre><code class="language-json"> <span class="token property">"prettier/prettier"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">"warn"</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        <span class="token property">"endOfLine"</span><span class="token operator">:</span> <span class="token string">"auto"</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+</code></pre>
+<ul>
+<li>Commit the code and push the results to the remote with <code>git push</code></li>
+</ul>
+<h2>Configure Jest</h2>
+<ul>
+<li>Install Jest and other dependencies for testing</li>
+</ul>
+<pre><code class="language-bash">npm i -D @types/jest jest jest-environment-jsdom @testing-library/react @testing-library/jest-dom
+</code></pre>
+<ul>
+<li>Create <code>jest.config.mjs</code> file in the root:`</li>
+</ul>
+<pre><code class="language-js"><span class="token keyword">import</span> nextJest <span class="token keyword">from</span> <span class="token string">"next/jest.js"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> createJestConfig <span class="token operator">=</span> <span class="token function">nextJest</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">dir</span><span class="token operator">:</span> <span class="token string">"./"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/** @type {import('jest').Config} */</span>
+<span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">collectCoverageFrom</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">"**/*.{js,jsx,ts,tsx}"</span><span class="token punctuation">,</span>
+    <span class="token string">"!**/*.d.ts"</span><span class="token punctuation">,</span>
+    <span class="token string">"!**/node_modules/**"</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">testEnvironment</span><span class="token operator">:</span> <span class="token string">"jest-environment-jsdom"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">setupFilesAfterEnv</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"&lt;rootDir&gt;/jest.setup.js"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">testPathIgnorePatterns</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"&lt;rootDir&gt;/node_modules/"</span><span class="token punctuation">,</span> <span class="token string">"&lt;rootDir&gt;/.next/"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">createJestConfig</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<ul>
+<li>Create <code>jest.setup.js</code> file in the root and configure:</li>
+</ul>
+<pre><code class="language-js"><span class="token keyword">import</span> <span class="token string">"@testing-library/jest-dom"</span><span class="token punctuation">;</span>
+</code></pre>
+<ul>
+<li>Update <code>tsconfig</code> file with</li>
+</ul>
+<pre><code class="language-json"> <span class="token property">"include"</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">"jest.setup.js"</span><span class="token punctuation">]</span>
+</code></pre>
+<p>Update <code>package.json</code> with new test scripts</p>
+<pre><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"jest"</span><span class="token punctuation">,</span>
+  <span class="token property">"test:w"</span><span class="token operator">:</span> <span class="token string">"jest --watch"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li>Write a simple test and verify that test works fine</li>
+</ul>
+<p>Optionally Setup husky to support testing on push:</p>
+<pre><code class="language-bash">npx husky add .husky/pre-push "npm test"
+</code></pre>
+<ul>
+<li>Push the changes and observe the results</li>
+<li>Commit the code and push the results to the remote with <code>git push</code></li>
+</ul>
+<h2>Deploy</h2>
+<p>Azure deployment helpers.</p>
+<ul>
+<li>Update <code>next.config.js</code>:</li>
+</ul>
+<pre><code class="language-js"><span class="token keyword">const</span> nextConfig <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">output</span><span class="token operator">:</span> <span class="token string">"standalone"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<ul>
+<li>Update the pipeline with a copy step (standalone mode does not include copying all the important files for an unknown reason).</li>
+</ul>
+<pre><code class="language-yaml"> - name: copy files
+        run: |
+          cp -R .next/static .next/standalone/.next/static
+          cp -R ./public .next/standalone/public
+</code></pre>
+<ul>
+<li>Update pipeline with propper path to the build:</li>
+</ul>
+<pre><code class="language-yaml"> - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v2
+        with:
+          name: node-app
+          path: .next/standalone
+</code></pre>
+<ul>
+<li>Update package.json with command to start the server</li>
+</ul>
+<pre><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"start:azure"</span><span class="token operator">:</span> <span class="token string">"node server"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li>Update Azure to use <code>npm run start:azure</code> command to start the app on Prod</li>
+</ul>
+<h2>Optional things</h2>
+<ul>
+<li>Build on push</li>
+<li>Calculate <a href="https://www.npmjs.com/package/bundlesize">bundlesize</a></li>
+<li>Install <a href="https://www.npmjs.com/package/webpack-bundle-analyzer">webpackbundle analyzer</a></li>
+<li>Setup E2E tests - <a href="https://nextjs.org/docs/pages/building-your-application/optimizing/testing">instruction</a></li>
+</ul>
+<p class="tag">[09.09.2023] nextjs, react, prettier, husky, how-to</p></article></div></main><footer class="footer"><a href="https://github.com/Drag13/drag13.github.io/blob/development/LICENSE" rel="noopener" target="_blank" title="License">2023 MIT by Drag13</a></footer></body></html>
