@@ -5,19 +5,19 @@ This short instruction will guide you through creating a Next.js app, complete w
 ## Table of Content
 
 - Create new Next.JS application
-- Setup Prettier 
-- Configure Eslint 
-- Setup Husky with LintStaged 
-- Setup tests with Jest 
-- Deployment notes 
-- Other options
+- Setup Prettier
+- Configure Eslint
+- Setup Husky with LintStaged
+- Setup tests with Jest
+- Deployment notes
+- Extra options
 
 ## Before you start
 
 - Use the console for a better debugging experience, especially for the commit and push phases with Husky.
 - You may require extra steps depending on your needs and tools.
 
-## Create new project
+## Create a new NextJS project
 
 - Create an **EMPTY** remote repository (GitHub, GitLab, etc)
 
@@ -136,7 +136,7 @@ npm i husky lint-staged -D
 
 _Note - The first and second points are similar, but they run in parallel to speed up the process._
 
-Add new commands to the `package.json`
+- Add new commands to the `package.json`
 
 ```json
 {
@@ -210,7 +210,7 @@ import "@testing-library/jest-dom";
  "include": [ "jest.setup.js"]
 ```
 
-Update `package.json` with new test scripts
+- Update `package.json` with new test scripts
 
 ```json
 {
@@ -220,8 +220,7 @@ Update `package.json` with new test scripts
 ```
 
 - Write a simple test and verify that test works fine
-
-Optionally Setup husky to support testing on push:
+- Optionally setup husky to support testing on push:
 
 ```bash
 npx husky add .husky/pre-push "npm test"
@@ -261,7 +260,7 @@ const nextConfig = {
           path: .next/standalone
 ```
 
-- Update package.json with command to start the server
+- Update `package.json` with command to start the server
 
 ```json
 {
@@ -271,9 +270,11 @@ const nextConfig = {
 
 - Update Azure to use `npm run start:azure` command to start the app on Prod
 
-## Optional things
+## Extra options
 
-- Build on push
+- Build on push - `npm run build`
 - Calculate [bundlesize](https://www.npmjs.com/package/bundlesize)
 - Install [webpackbundle analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer)
 - Setup E2E tests - [instruction](https://nextjs.org/docs/pages/building-your-application/optimizing/testing)
+
+[Ukrainian version](../create-new-nextjs-app-with-prettier-eslint-tests-ua/index.pug)
