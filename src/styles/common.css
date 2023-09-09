@@ -1,5 +1,5 @@
-@import "~/styles/_variables.less";
-@import "~/styles/_markdown.less";
+@import "~/styles/_variables.css";
+@import "~/styles/_markdown.css";
 
 html,
 body {
@@ -27,28 +27,29 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: @header;
+  background-color: var(--header);
   margin-bottom: 2rem;
   justify-content: space-between;
+}
 
-  .link {
-    color: @white;
-    font-weight: bolder;
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+.nav .link {
+  color: var(--white);
+  font-weight: bolder;
+  text-decoration: none;
+}
 
-  .icon {
-    display: inline-block;
-    text-decoration: none;
-    line-height: 0;
+.nav .link:hover {
+  text-decoration: underline;
+}
 
-    &:not(:last-child) {
-      margin-right: 16px;
-    }
-  }
+.nav .icon {
+  display: inline-block;
+  text-decoration: none;
+  line-height: 0;
+}
+
+.nav .icon:not(:last-child) {
+  margin-right: 16px;
 }
 
 .main {
@@ -63,13 +64,11 @@ body {
   max-width: 1012px;
 }
 
-.next-back {
-  a.next {
-    float: left;
-  }
-  a.back {
-    float: right;
-  }
+.next-back .next {
+  float: left;
+}
+.next-back .back {
+  float: right;
 }
 
 .footer {
@@ -81,6 +80,6 @@ body {
 .footer a {
   font-style: italic;
   text-decoration: none;
-  color: @license;
+  color: var(--license);
   font-size: 12px;
 }
