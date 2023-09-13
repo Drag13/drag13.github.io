@@ -2,11 +2,11 @@
 <p>Ця коротка інструкція допоможе вам створити додаток Next.js з конфігураціями Prettier, ESLint, Husky та Jest, а також розгорнути його на Azure. Дізнайтеся, як налаштувати новий проект, налаштувати Prettier та ESLint, використовувати Husky для перевірки перед комітом, писати тести з Jest та розгортати ваш додаток на Azure для оптимізованого середовища виробництва.</p>
 <h2>Зміст</h2>
 <ul>
-<li>Створіть новий додаток Next.JS</li>
-<li>Налаштуйте Prettier</li>
-<li>Налаштуйте Eslint</li>
-<li>Налаштуйте Husky з lint-staged</li>
-<li>Налаштуйте тести з Jest</li>
+<li>Створюємо новий додаток Next.JS</li>
+<li>Налаштовуємо Prettier</li>
+<li>Налаштовуємо Eslint</li>
+<li>Налаштовуємо Husky з lint-staged</li>
+<li>Налаштовуємо тести з Jest</li>
 <li>Примітки щодо розгортання</li>
 <li>Додаткові опції</li>
 </ul>
@@ -76,7 +76,7 @@ git push -u origin master
 <ul>
 <li>Встановіть парсер та плагін</li>
 </ul>
-<pre><code class="language-bash">npm i -D @typescript-eslint/parser @typescript-eslint/eslint-plugin
+<pre><code class="language-cmd"><span class="token function">npm</span> i <span class="token parameter variable">-D</span> @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-react-hooks
 </code></pre>
 <ul>
 <li>Налаштуйте EsLint на рекомендовані</li>
@@ -86,13 +86,18 @@ git push -u origin master
     <span class="token string">"next/core-web-vitals"</span><span class="token punctuation">,</span>
     <span class="token string">"eslint:recommended"</span><span class="token punctuation">,</span>
     <span class="token string">"plugin:@typescript-eslint/recommended"</span><span class="token punctuation">,</span>
+    <span class="token string">"plugin:react-hooks/recommended"</span><span class="token punctuation">,</span>
     <span class="token string">"prettier"</span>
   <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"plugins"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"prettier"</span><span class="token punctuation">,</span> <span class="token string">"@typescript-eslint"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"plugins"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">"prettier"</span><span class="token punctuation">,</span>
+    <span class="token string">"@typescript-eslint"</span><span class="token punctuation">,</span>
+    <span class="token string">"plugin:react-hooks/recommended"</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token property">"parser"</span><span class="token operator">:</span> <span class="token string">"@typescript-eslint/parser"</span><span class="token punctuation">,</span>
   <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"prettier/prettier"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-      <span class="token string">"error"</span><span class="token punctuation">,</span>
+      <span class="token string">"warn"</span><span class="token punctuation">,</span>
       <span class="token punctuation">{</span>
         <span class="token property">"endOfLine"</span><span class="token operator">:</span> <span class="token string">"auto"</span>
       <span class="token punctuation">}</span>
