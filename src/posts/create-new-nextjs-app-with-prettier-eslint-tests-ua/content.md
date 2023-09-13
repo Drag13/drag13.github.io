@@ -185,7 +185,7 @@ const createJestConfig = nextJest({
 /** @type {import('jest').Config} */
 const config = {
   collectCoverageFrom: [
-    "**/*.{js,jsx,ts,tsx}",
+    "app/**/*.{js,jsx,ts,tsx}",
     "!**/*.d.ts",
     "!**/node_modules/**",
   ],
@@ -213,7 +213,7 @@ import "@testing-library/jest-dom";
 
 ```json
 {
-  "test": "jest",
+  "test": "jest --coverage",
   "test:w": "jest --watch"
 }
 ```
@@ -227,6 +227,21 @@ npx husky add .husky/pre-push "npm test"
 
 - Надішліть зміни та спостерігайте за результатами
 - Закомітьте код та надішліть результати до віддаленого репозиторію за допомогою `git push`:
+
+## Мінімальний розмір покриття тестами
+
+За бажанням можемо сконфігурувати мінімальний розмір покриття тестами. Для цього додайте нову секцію в `jest.config.mjs`:
+
+```javascript
+ coverageThreshold: {
+    global: {
+      branches: 30,
+      functions: 30,
+      lines: 30,
+      statements: 30,
+    },
+  },
+```
 
 ## Розгортання
 

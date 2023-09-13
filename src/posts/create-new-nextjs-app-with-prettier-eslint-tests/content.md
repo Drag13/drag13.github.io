@@ -186,7 +186,7 @@ const createJestConfig = nextJest({
 /** @type {import('jest').Config} */
 const config = {
   collectCoverageFrom: [
-    "**/*.{js,jsx,ts,tsx}",
+    "app/**/*.{js,jsx,ts,tsx}",
     "!**/*.d.ts",
     "!**/node_modules/**",
   ],
@@ -214,7 +214,7 @@ import "@testing-library/jest-dom";
 
 ```json
 {
-  "test": "jest",
+  "test": "jest --coverage",
   "test:w": "jest --watch"
 }
 ```
