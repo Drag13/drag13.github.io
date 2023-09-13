@@ -4,11 +4,11 @@
 
 ## Зміст
 
-- Створіть новий додаток Next.JS
-- Налаштуйте Prettier
-- Налаштуйте Eslint
-- Налаштуйте Husky з lint-staged
-- Налаштуйте тести з Jest
+- Створюємо новий додаток Next.JS
+- Налаштовуємо Prettier
+- Налаштовуємо Eslint
+- Налаштовуємо Husky з lint-staged
+- Налаштовуємо тести з Jest
 - Примітки щодо розгортання
 - Додаткові опції
 
@@ -84,8 +84,8 @@ npm i @types/node @types/react @types/react-dom eslint eslint-config-next typesc
 
 - Встановіть парсер та плагін
 
-```bash
-npm i -D @typescript-eslint/parser @typescript-eslint/eslint-plugin
+```cmd
+npm i -D @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-react-hooks
 ```
 
 - Налаштуйте EsLint на рекомендовані
@@ -96,13 +96,18 @@ npm i -D @typescript-eslint/parser @typescript-eslint/eslint-plugin
     "next/core-web-vitals",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
     "prettier"
   ],
-  "plugins": ["prettier", "@typescript-eslint"],
+  "plugins": [
+    "prettier",
+    "@typescript-eslint",
+    "plugin:react-hooks/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "rules": {
     "prettier/prettier": [
-      "error",
+      "warn",
       {
         "endOfLine": "auto"
       }
