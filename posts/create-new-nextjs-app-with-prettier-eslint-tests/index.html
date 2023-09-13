@@ -166,7 +166,7 @@ git push -u origin master
 <span class="token comment">/** @type {import('jest').Config} */</span>
 <span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
   <span class="token literal-property property">collectCoverageFrom</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token string">"**/*.{js,jsx,ts,tsx}"</span><span class="token punctuation">,</span>
+    <span class="token string">"app/**/*.{js,jsx,ts,tsx}"</span><span class="token punctuation">,</span>
     <span class="token string">"!**/*.d.ts"</span><span class="token punctuation">,</span>
     <span class="token string">"!**/node_modules/**"</span><span class="token punctuation">,</span>
   <span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -191,7 +191,7 @@ git push -u origin master
 <li>Update <code>package.json</code> with new test scripts</li>
 </ul>
 <pre><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"jest"</span><span class="token punctuation">,</span>
+  <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"jest --coverage"</span><span class="token punctuation">,</span>
   <span class="token property">"test:w"</span><span class="token operator">:</span> <span class="token string">"jest --watch"</span>
 <span class="token punctuation">}</span>
 </code></pre>
