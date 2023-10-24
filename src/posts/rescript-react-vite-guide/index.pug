@@ -1,0 +1,12 @@
+extends ../_layout
+
+block variables
+  - var title = 'The Complete Guide to Setting up React with ReScript and Vite'
+  - var description = 'Learn how to set up React with ReScript and Vite to build efficient web applications. Follow this step-by-step guide for a seamless development experience'
+  - var keywords = 'rescript react vite guide how-to webdev'
+  - var canonical = 'https://drag13.io/posts/rescript-react-vite-guide/index.html'
+
+block content
+  article.post
+    include:highlight:markdown-it content.md
+    p.tag [25.10.2023] rescript react vite
