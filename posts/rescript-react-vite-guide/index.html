@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="en" prefix="og: http://ogp.me/ns#"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self';  manifest-src 'self'; script-src 'none'; object-src 'none'; style-src 'self' 'unsafe-inline';"><title>The Complete Guide to Setting up React with ReScript and Vite</title><meta property="og:title" content="The Complete Guide to Setting up React with ReScript and Vite"><meta name="description" content="Learn how to set up React with ReScript and Vite to build efficient web applications. Follow this step-by-step guide for a seamless development experience"><meta property="og:description" content="Learn how to set up React with ReScript and Vite to build efficient web applications. Follow this step-by-step guide for a seamless development experience"><meta name="keywords" content="rescript react vite guide how-to webdev"><link rel="canonical" href="https://drag13.io/posts/rescript-react-vite-guide/index.html"><meta property="og:url" content="https://drag13.io/posts/rescript-react-vite-guide/index.html"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="https://twitter.com/drag137"><meta name="twitter:url" content="https://drag13.io/posts/rescript-react-vite-guide/index.html"><meta name="twitter:title" content="The Complete Guide to Setting up React with ReScript and Vite"><meta name="twitter:description" content="Learn how to set up React with ReScript and Vite to build efficient web applications. Follow this step-by-step guide for a seamless development experience"><meta name="og:site_name" content="Drag13 Dev Blog"><meta name="application-name" content="Drag13 programmer's blog"><meta name="author" content="Drag13"><meta name="robots" content="index follow"><meta name="application-name" content="Drag13 Dev Blog"><link rel="stylesheet" href="https://drag13.io/common.fa446fe9.css"><style>.post .tag{color:var(--hashtag)}</style><link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://drag13.io/apple-touch-icon-144x144.f6d9dce4.png"><link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://drag13.io/apple-touch-icon-152x152.5c0b4e01.png"><link rel="icon" type="image/png" href="https://drag13.io/favicon-32x32.2ff4c37a.png" sizes="32x32"><link rel="icon" type="image/png" href="https://drag13.io/favicon-16x16.60caff07.png" sizes="16x16"><link rel="manifest" crossorigin="use-credentials" href="https://drag13.io/manifest.webmanifest"><body><nav class="nav"><a class="link" href="/" title="Back to the main page">Home</a><div><a class="icon" href="https://github.com/Drag13" target="_blank" rel="noopener" title="Drag13 GitHub profile"><svg height="32" viewBox="0 0 16 16" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="icon" href="https://twitter.com/drag137" target="_blank" rel="noopener" title="Drag13 Twitter profile"><svg height="32" width="32" viewBox="0 0 24 24" aria-hidden="true" fill="rgba(29,161,242,1.00)"><path d="M23.643 4.937c-.835.37-1.732.62-2.675.733a4.67 4.67 0 002.048-2.578 9.3 9.3 0 01-2.958 1.13 4.66 4.66 0 00-7.938 4.25 13.229 13.229 0 01-9.602-4.868c-.4.69-.63 1.49-.63 2.342A4.66 4.66 0 003.96 9.824a4.647 4.647 0 01-2.11-.583v.06a4.66 4.66 0 003.737 4.568 4.692 4.692 0 01-2.104.08 4.661 4.661 0 004.352 3.234 9.348 9.348 0 01-5.786 1.995 9.5 9.5 0 01-1.112-.065 13.175 13.175 0 007.14 2.093c8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602a9.47 9.47 0 002.323-2.41z"/></svg></a></div></nav><main class="main"><div class="content markdown-body"><article class="post"><h1>The Complete Guide to Setting up React with ReScript and Vite</h1>
+<p>If you're intrigued by the idea of exploring another strongly typed, functional language, you should definitely give ReScript a try. This guide is designed to assist you in setting up a fundamental React application using ReScript and Vite, offering you a fantastic opportunity to delve into this exciting combination of technologies. With ReScript's type safety and the speed of Vite, you'll be well on your way to building robust and highly performant web applications that are a joy to work with. So, let's embark on this journey of enhancing your web development skills by seamlessly integrating React, ReScript, and Vite into your workflow.</p>
+<h2>Prerequisites</h2>
+<p>Before diving into the setup process, make sure you have Node.js and npm installed on your system. You'll also need a code editor, and for the purposes of this guide, we'll assume you're using Visual Studio Code.</p>
+<h2>Step 1: Initialize a Vite Project</h2>
+<p>To get started, open your terminal and run the following command:</p>
+<pre><code class="language-bash">npm init vite retest
+</code></pre>
+<p>This command initializes a Vite project named "retest" template, which provides a basic structure for your project.</p>
+<p>If you are using git, - update <code>.gitignore</code> with next two lines:</p>
+<pre><code>*.bs.js
+lib
+</code></pre>
+<h2>Step 2: Clean Up the Project</h2>
+<p>Upon project initialization, you may find some unnecessary files and folders created. To clean up your project, follow these steps:</p>
+<ul>
+<li>Navigate to the "retest" folder: <code>cd retest</code></li>
+<li>Create a new "src" folder: <code>mkdir src</code></li>
+<li>Delete the following files and folders:</li>
+<li>
+<ul>
+<li>counter.js</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>main.js</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>public</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>javascript.svg</li>
+</ul>
+</li>
+<li>Move the style.css file to the "src" folder.</li>
+</ul>
+<p>Your project structure should now be much cleaner and easier to use.</p>
+<h2>Step 3: Install Dependencies</h2>
+<p>Next, install the required dependencies for React, ReScript, and Vite. Run the following commands:</p>
+<pre><code class="language-bash">npm install @rescript/react rescript -D
+npm install react react-dom
+</code></pre>
+<p>Additionally, it's a good idea to install the <a href="https://marketplace.visualstudio.com/items?itemName=chenglou92.rescript-vscode">ReScript VSCode extension</a> to enhance your development experience.</p>
+<h2>Step 4: Update package.json</h2>
+<p>Open your <code>package.json</code> file and update the scripts section to include the following commands:</p>
+<pre><code class="language-json"><span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">"build:res"</span><span class="token operator">:</span> <span class="token string">"rescript"</span><span class="token punctuation">,</span>
+  <span class="token property">"dev:res"</span><span class="token operator">:</span> <span class="token string">"rescript build -w"</span><span class="token punctuation">,</span>
+  <span class="token property">"dev"</span><span class="token operator">:</span> <span class="token string">"vite"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>These scripts will help you build and run your ReScript and Vite development server.</p>
+<h2>Step 5: Configure ReScript</h2>
+<p>To configure ReScript, create a bsconfig.json file in the project root and populate it with the following content:</p>
+<pre><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"your-project-name"</span><span class="token punctuation">,</span>
+  <span class="token property">"sources"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"dir"</span><span class="token operator">:</span> <span class="token string">"src"</span><span class="token punctuation">,</span>
+      <span class="token property">"subdirs"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"package-specs"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"module"</span><span class="token operator">:</span> <span class="token string">"es6"</span><span class="token punctuation">,</span>
+      <span class="token property">"in-source"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"suffix"</span><span class="token operator">:</span> <span class="token string">".bs.js"</span><span class="token punctuation">,</span>
+  <span class="token property">"jsx"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token property">"version"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token property">"mode"</span><span class="token operator">:</span> <span class="token string">"automatic"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"bs-dependencies"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"@rescript/react"</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Make sure to replace "your-project-name" with your desired project name.</p>
+<h2>Step 6: Create an index.res File</h2>
+<p>In the <code>src</code> folder, create a new file named index.res and add the following ReScript code:</p>
+<pre><code class="language-reason">switch (ReactDOM.querySelector("#app")) {
+| Some(rootElement) =&gt; {
+    let root = ReactDOM.Client.createRoot(rootElement)
+    ReactDOM.Client.Root.render(root, &lt;h1&gt; {React.string("Hello world")} &lt;/h1&gt;)
+  }
+| None =&gt; Js.Console.log("No root element found")
+}
+</code></pre>
+<p>This code sets up your React app to render within the "app" element in your HTML file. If the element with id <code>app</code> will not be found, you will see an error in console. This is the first time we see a ReScript here. I am using the pattern matching to conditionally render the app if <code>#app</code> exists and what is very cool - ReScript helps me to handle unhappy cases.</p>
+<h2>Step 7: Connect ReScript to index.html</h2>
+<p>In the <code>index.html</code> file located in the project root, change the <code>&lt;script&gt;</code> tag's src attribute from <code>/main.js</code> to <code>./src/index.bs.js.</code></p>
+<p>This change ensures that your ReScript code will be included in your project correctly.</p>
+<h2>Step 8: Start ReScript and Vite</h2>
+<p>To start your development environment, open two separate terminal windows and run the following commands:</p>
+<pre><code class="language-bash">npm run dev:res
+npm run dev
+</code></pre>
+<p>This starts the ReScript compiler in watch mode and the Vite development server in parallel. Your project should now be live at http://127.0.0.1:5173/.</p>
+<p>Open it and check the result.</p>
+<h2>Step 9: Add Global Styles</h2>
+<p>You can import global styles into your ReScript code by adding the following line at the beginning of your index.res file:</p>
+<pre><code class="language-reason">%%raw("import './style.css'")
+</code></pre>
+<p>This allows you to include your global CSS styles in your project - such as <code>reset.css</code> or other styles you want to be applied globally.</p>
+<h2>Step 10: Add a New React Component</h2>
+<p>To add a new React component, create a new file in the "src" folder named App.res. In this file, include the following code:</p>
+<pre><code class="language-reason">@react.component
+let make = (~title) =&gt; &lt;h1&gt; {React.string(title)} &lt;/h1&gt;
+</code></pre>
+<p>This code defines a basic React component named "App" with a prop for the title. Very important to follow the convention - name of the variable should be <code>make</code>.</p>
+<h2>Step 11: Update index.res with the New Component</h2>
+<p>In your <code>index.res</code> file, update the rendering code to include the new "App" component:</p>
+<pre><code class="language-reason">ReactDOM.Client.Root.render(root, &lt;App title="Hello world!" /&gt;);
+</code></pre>
+<p>In the similar way you can add other components to build your app. Just remember to name the variable <code>make</code> and use single file per component.</p>
+<h2>Step 12: Use CSS Modules for Component Styling</h2>
+<p>To apply styles to your <code>App</code> component using CSS modules, follow these steps:</p>
+<ul>
+<li>Create a new file in the "src" folder named <code>app.module.css</code>.</li>
+<li>Add the following CSS code to app.module.css:</li>
+</ul>
+<pre><code class="language-css">.header {
+  color: #4AF626;
+}
+</code></pre>
+<p>In your <code>App.res</code> component, import the styles using the following code:</p>
+<pre><code class="language-reason">@module external styles: {..} = "./app.module.css";
+</code></pre>
+<p>Apply the "header" class to the &lt;h1&gt; element in your "App" component using square brackets:
+reason</p>
+<pre><code class="language-jsx">&lt;h1 className={styles["header"]}&gt; {React.string(title)} &lt;/h1&gt;
+</code></pre>
+<p>With these steps, you can style your React components using CSS modules.</p>
+<h2>Conclusion</h2>
+<p>Congratulations! You've successfully set up a development environment with React, ReScript, and Vite. This powerful combination allows you to create efficient and maintainable web applications with ease. With the basics in place, you can now start building your application and exploring the full capabilities of these technologies. Enjoy your web development journey!</p>
+<p>You can find the code example in the <a href="https://github.com/Drag13/rescript-react-vite-example">GitHub demo repository</a></p>
+<p class="tag">[25.10.2023] rescript react vite</p></article></div></main><footer class="footer"><a href="https://github.com/Drag13/drag13.github.io/blob/development/LICENSE" rel="noopener" target="_blank" title="License">2023 MIT by Drag13</a></footer></body></html>
