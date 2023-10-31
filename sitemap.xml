@@ -9,17 +9,22 @@
 
 <url>
   <loc>https://drag13.io/</loc>
-  <lastmod>2023-09-09T17:54:45+00:00</lastmod>
+  <lastmod>2023-10-31T08:49:32+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
+  <loc>https://drag13.io/posts/rescript-react-vite-guide/index.html</loc>
+  <lastmod>2023-10-31T08:49:32+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://drag13.io/posts/create-new-nextjs-app-with-prettier-eslint-tests/index.html</loc>
-  <lastmod>2023-09-09T17:54:45+00:00</lastmod>
+  <lastmod>2023-10-31T08:49:32+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://drag13.io/posts/nextjs-new-server-components/index.html</loc>
-  <lastmod>2023-09-09T17:54:45+00:00</lastmod>
+  <lastmod>2023-10-31T08:49:32+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
@@ -94,87 +99,87 @@
 </url>
 <url>
   <loc>https://drag13.io/posts/typescript-tips-tricks-case-study/index.html</loc>
-  <lastmod>2023-09-09T17:54:45+00:00</lastmod>
+  <lastmod>2023-10-31T08:49:32+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://drag13.io/posts/react-performance-puppeteer-limits/index.html</loc>
-  <lastmod>2023-09-09T17:54:45+00:00</lastmod>
+  <lastmod>2023-10-31T08:49:32+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://drag13.io/posts/react-performance-puppeteer-profile/index.html</loc>
-  <lastmod>2023-09-09T17:54:45+00:00</lastmod>
+  <lastmod>2023-10-31T08:49:32+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://drag13.io/posts/how-turn-off-floc-javascript/index.html</loc>
-  <lastmod>2023-09-09T17:54:45+00:00</lastmod>
+  <lastmod>2023-10-31T08:49:32+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://drag13.io/posts/typescript-tricks-utility-examples/index.html</loc>
-  <lastmod>2023-09-09T17:54:45+00:00</lastmod>
+  <lastmod>2023-10-31T08:49:32+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://drag13.io/posts/typescript-tips-tricks-declarations/index.html</loc>
-  <lastmod>2023-09-09T17:54:45+00:00</lastmod>
+  <lastmod>2023-10-31T08:49:32+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://drag13.io/posts/perfrunner-intro/index.html</loc>
-  <lastmod>2023-09-09T17:54:45+00:00</lastmod>
+  <lastmod>2023-10-31T08:49:32+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://drag13.io/posts/react-inline-runtimer-chunk/index.html</loc>
-  <lastmod>2023-09-09T17:54:45+00:00</lastmod>
+  <lastmod>2023-10-31T08:49:32+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://drag13.io/posts/custom-typings/index.html</loc>
-  <lastmod>2023-09-09T17:54:45+00:00</lastmod>
+  <lastmod>2023-10-31T08:49:32+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://drag13.io/page1.html</loc>
-  <lastmod>2023-09-09T17:54:45+00:00</lastmod>
+  <lastmod>2023-10-31T08:49:32+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://drag13.io/posts/create-new-nextjs-app-with-prettier-eslint-tests-ua/index.html</loc>
-  <lastmod>2023-09-09T17:54:45+00:00</lastmod>
+  <lastmod>2023-10-31T08:49:32+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://drag13.io/posts/react-performance-puppeteer-profile/</loc>
-  <lastmod>2023-09-09T17:54:45+00:00</lastmod>
+  <lastmod>2023-10-31T08:49:32+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://drag13.io/posts/security-headers/index.html</loc>
-  <lastmod>2023-09-09T17:54:45+00:00</lastmod>
+  <lastmod>2023-10-31T08:49:32+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://drag13.io/posts/v8-bytecode/index.html</loc>
-  <lastmod>2023-09-09T17:54:45+00:00</lastmod>
+  <lastmod>2023-10-31T08:49:32+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://drag13.io/posts/start-new-project/index.html</loc>
-  <lastmod>2023-09-09T17:54:45+00:00</lastmod>
+  <lastmod>2023-10-31T08:49:32+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://drag13.io/posts/ci-cd-net/index.html</loc>
-  <lastmod>2023-09-09T17:54:45+00:00</lastmod>
+  <lastmod>2023-10-31T08:49:32+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://drag13.io/index.html</loc>
-  <lastmod>2023-09-09T17:54:45+00:00</lastmod>
+  <lastmod>2023-10-31T08:49:32+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 
