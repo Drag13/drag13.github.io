@@ -1,6 +1,6 @@
 # The Complete Guide to Setting up React with ReScript and Vite
 
-Are you looking to enhance your web development workflow by combining the power of React, ReScript, and Vite? This comprehensive guide will take you through the steps to set up these technologies, allowing you to build efficient and robust web applications.
+If you're intrigued by the idea of exploring another strongly typed, functional language, you should definitely give ReScript a try. This guide is designed to assist you in setting up a fundamental React application using ReScript and Vite, offering you a fantastic opportunity to delve into this exciting combination of technologies. With ReScript's type safety and the speed of Vite, you'll be well on your way to building robust and highly performant web applications that are a joy to work with. So, let's embark on this journey of enhancing your web development skills by seamlessly integrating React, ReScript, and Vite into your workflow.
 
 ## Prerequisites
 
@@ -34,7 +34,7 @@ Upon project initialization, you may find some unnecessary files and folders cre
 * * javascript.svg
 * Move the style.css file to the "src" folder.
 
-Your project structure should now be much cleaner.
+Your project structure should now be much cleaner and easier to use.
 
 ## Step 3: Install Dependencies
 Next, install the required dependencies for React, ReScript, and Vite. Run the following commands:
@@ -98,12 +98,12 @@ switch (ReactDOM.querySelector("#app")) {
 }
 ```
 
-This code sets up your React app to render within the "app" element in your HTML file. If the element with id `app` will not be found, you will see an error in console.
+This code sets up your React app to render within the "app" element in your HTML file. If the element with id `app` will not be found, you will see an error in console. This is the first time we see a ReScript here. I am using the pattern matching to conditionally render the app if `#app` exists and what is very cool - ReScript helps me to handle unhappy cases. 
 
 ## Step 7: Connect ReScript to index.html
 In the `index.html` file located in the project root, change the `<script>` tag's src attribute from `/main.js` to `./src/index.bs.js.`
 
-This change ensures that your ReScript code will be compiled and included in your project correctly.
+This change ensures that your ReScript code will be included in your project correctly.
 
 ## Step 8: Start ReScript and Vite
 To start your development environment, open two separate terminal windows and run the following commands:
@@ -124,7 +124,7 @@ You can import global styles into your ReScript code by adding the following lin
 %%raw("import './style.css'")
 ```
 
-This allows you to include your global CSS styles in your project.
+This allows you to include your global CSS styles in your project - such as `reset.css` or other styles you want to be applied globally.
 
 ## Step 10: Add a New React Component
 
@@ -134,7 +134,7 @@ To add a new React component, create a new file in the "src" folder named App.re
 @react.component
 let make = (~title) => <h1> {React.string(title)} </h1>
 ```
-This code defines a basic React component named "App" with a prop for the title.
+This code defines a basic React component named "App" with a prop for the title. Very important to follow the convention - name of the variable should be `make`. 
 
 ## Step 11: Update index.res with the New Component
 In your `index.res` file, update the rendering code to include the new "App" component:
@@ -142,6 +142,8 @@ In your `index.res` file, update the rendering code to include the new "App" com
 ```reason
 ReactDOM.Client.Root.render(root, <App title="Hello world!" />);
 ```
+
+In the similar way you can add other components to build your app. Just remember to name the variable `make` and use single file per component.
 
 ## Step 12: Use CSS Modules for Component Styling
 To apply styles to your `App` component using CSS modules, follow these steps:
