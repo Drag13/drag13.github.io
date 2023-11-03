@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="en" prefix="og: http://ogp.me/ns#"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self';  manifest-src 'self'; script-src 'none'; object-src 'none'; style-src 'self' 'unsafe-inline';"><title>React, Rescript, Vite - як ствоити проект</title><meta property="og:title" content="React, Rescript, Vite - як ствоити проект"><meta name="description" content="Коротка інструкція як створити новий React застосунок на мові ReScript за допомогою Vite"><meta property="og:description" content="Коротка інструкція як створити новий React застосунок на мові ReScript за допомогою Vite"><meta name="keywords" content="rescript react vite guide how-to webdev"><link rel="canonical" href="https://drag13.io/posts/rescript-react-vite-guide-ua/index.html"><meta property="og:url" content="https://drag13.io/posts/rescript-react-vite-guide-ua/index.html"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="https://twitter.com/drag137"><meta name="twitter:url" content="https://drag13.io/posts/rescript-react-vite-guide-ua/index.html"><meta name="twitter:title" content="React, Rescript, Vite - як ствоити проект"><meta name="twitter:description" content="Коротка інструкція як створити новий React застосунок на мові ReScript за допомогою Vite"><meta name="og:site_name" content="Drag13 Dev Blog"><meta name="application-name" content="Drag13 programmer's blog"><meta name="author" content="Drag13"><meta name="robots" content="index follow"><meta name="application-name" content="Drag13 Dev Blog"><link rel="stylesheet" href="https://drag13.io/common.fa446fe9.css"><style>.post .tag{color:var(--hashtag)}</style><link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://drag13.io/apple-touch-icon-144x144.f6d9dce4.png"><link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://drag13.io/apple-touch-icon-152x152.5c0b4e01.png"><link rel="icon" type="image/png" href="https://drag13.io/favicon-32x32.2ff4c37a.png" sizes="32x32"><link rel="icon" type="image/png" href="https://drag13.io/favicon-16x16.60caff07.png" sizes="16x16"><link rel="manifest" crossorigin="use-credentials" href="https://drag13.io/manifest.webmanifest"><body><nav class="nav"><a class="link" href="/" title="Back to the main page">Home</a><div><a class="icon" href="https://github.com/Drag13" target="_blank" rel="noopener" title="Drag13 GitHub profile"><svg height="32" viewBox="0 0 16 16" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a><a class="icon" href="https://twitter.com/drag137" target="_blank" rel="noopener" title="Drag13 Twitter profile"><svg height="32" width="32" viewBox="0 0 24 24" aria-hidden="true" fill="rgba(29,161,242,1.00)"><path d="M23.643 4.937c-.835.37-1.732.62-2.675.733a4.67 4.67 0 002.048-2.578 9.3 9.3 0 01-2.958 1.13 4.66 4.66 0 00-7.938 4.25 13.229 13.229 0 01-9.602-4.868c-.4.69-.63 1.49-.63 2.342A4.66 4.66 0 003.96 9.824a4.647 4.647 0 01-2.11-.583v.06a4.66 4.66 0 003.737 4.568 4.692 4.692 0 01-2.104.08 4.661 4.661 0 004.352 3.234 9.348 9.348 0 01-5.786 1.995 9.5 9.5 0 01-1.112-.065 13.175 13.175 0 007.14 2.093c8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602a9.47 9.47 0 002.323-2.41z"/></svg></a></div></nav><main class="main"><div class="content markdown-body"><article class="post"><h1>The Complete Guide to Setting up React with ReScript and Vite</h1>
+<p>Попередження. Ця стаття не про переваги та недоліки ReScript, це просто інструкція як підняти React проект з ReScript за допомогою Vite. Якщо ви не хочете читати - просто склонуйте цей репозиторій, встановіть залежності та експерементуйте.</p>
+<h2>Передумови</h2>
+<p>Перш ніж приступити до налаштування, переконайтеся, що на вашій системі встановлені Node.js та npm. Вам також знадобиться редактор коду, і для цього прикладу я буду використовувати Visual Studio Code.</p>
+<h2>Крок 1: Ініціалізація проекту Vite</h2>
+<p>Для початку відкрийте ваш термінал та виконайте наступну команду:</p>
+<pre><code class="language-bash">npm init vite retest
+</code></pre>
+<p>Ця команда ініціалізує проект Vite з назвою "retest", який надає основну структуру для вашого проекту.</p>
+<p>Якщо ви маєте git, оновіть .gitignore наступними двома рядками:</p>
+<pre><code>*.bs.js
+lib
+</code></pre>
+<h2>Крок 2: Підготовка</h2>
+<p>Після ініціалізації проекту ви можете знайти деякі непотрібні файли та папки. Щоб очистити свій проект, виконайте такі дії:</p>
+<ul>
+<li>Перейдіть в папку "retest": `cd retest``</li>
+<li>Створіть нову папку "src": `mkdir src``</li>
+<li>Видаліть наступні файли та папки:</li>
+<li>
+<ul>
+<li>counter.js</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>main.js</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>public</li>
+</ul>
+</li>
+<li>
+<ul>
+<li>javascript.svg</li>
+</ul>
+</li>
+</ul>
+<p>Також перемістіть файл style.css до папки <code>src</code> і тепер ваша структура проекту буде набагато зручнішою в роботі.</p>
+<h2>Крок 3: Встановлення залежностей</h2>
+<p>Далі встановіть необхідні залежності для React, ReScript. Виконайте такі команди:</p>
+<pre><code class="language-bash">npm install @rescript/react rescript -D
+npm install react react-dom
+</code></pre>
+<p>Також раджу встановити офіційне розширення <a href="https://marketplace.visualstudio.com/items?itemName=chenglou92.rescript-vscode">ReScript для VSCode</a> для полегшення розробки</p>
+<h2>Крок 4: Оновлення package.json</h2>
+<p>Відкрийте файл <code>package.json</code> та додайт наступні команди в розділ "scripts":</p>
+<pre><code class="language-json"><span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token property">"build:res"</span><span class="token operator">:</span> <span class="token string">"rescript"</span><span class="token punctuation">,</span>
+  <span class="token property">"dev:res"</span><span class="token operator">:</span> <span class="token string">"rescript build -w"</span><span class="token punctuation">,</span>
+  <span class="token property">"dev"</span><span class="token operator">:</span> <span class="token string">"vite"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Ці команди знадобляться вам для того щоб запустити ваш застосунок.</p>
+<h2>Крок 5: Налаштування ReScript</h2>
+<p>Для налаштування ReScript створіть файл bsconfig.json в корені проекту та заповніть його наступним вмістом:</p>
+<pre><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"drag13proj"</span><span class="token punctuation">,</span>
+  <span class="token property">"sources"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"dir"</span><span class="token operator">:</span> <span class="token string">"src"</span><span class="token punctuation">,</span>
+      <span class="token property">"subdirs"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"package-specs"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"module"</span><span class="token operator">:</span> <span class="token string">"es6"</span><span class="token punctuation">,</span>
+      <span class="token property">"in-source"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"suffix"</span><span class="token operator">:</span> <span class="token string">".bs.js"</span><span class="token punctuation">,</span>
+  <span class="token property">"jsx"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token property">"version"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token property">"mode"</span><span class="token operator">:</span> <span class="token string">"automatic"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"bs-dependencies"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"@rescript/react"</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Не забудьте замінити <code>drag13proj</code> на бажане ім'я проекту. Або не міняйте, якщо воно вам пасує 😄</p>
+<h2>Крок 6: Створення файлу index.res</h2>
+<p>У папці <code>src</code> створіть новий файл з ім'ям index.res (res це розширення файлів ReScript) та додайте наступний код ReScript:</p>
+<pre><code class="language-reason">switch (ReactDOM.querySelector("#app")) {
+| Some(rootElement) =&gt; {
+    let root = ReactDOM.Client.createRoot(rootElement)
+    ReactDOM.Client.Root.render(root, &lt;h1&gt; {React.string("Hello world")} &lt;/h1&gt;)
+  }
+| None =&gt; Js.Console.log("No root element found")
+}
+</code></pre>
+<p>Цей код запускає наш React застосунок. Якщо елемент з id <code>app</code> не буде знайдено, ви побачите помилку в консолі. Це наша перша зустріч з ReScript і код може видатися трохи не зрозумілим, але насправді все прсто:</p>
+<p>Я пробую знайти елемент з id #app і якщо він є виконується гілка ініціалізації. Якщо немає - ми побачимо помилку у консолі. Ця конструкція називається <a href="https://rescript-lang.org/docs/manual/latest/pattern-matching-destructuring">Pattern Matching</a> і це щось накштал switch-case але на стероїдах - дуже потужна річ насправді.</p>
+<h2>Крок 7: Підключення ReScript до index.html</h2>
+<p>У файлі <code>index.html</code>, який знаходиться в корені проекту, змініть атрибут src тегу <code>&lt;script&gt;</code> з <code>/main.js</code> на <code>./src/index.bs.js</code>.</p>
+<p>Ця зміна забезпечує правильне включення вашого коду ReScript у ваш проект.</p>
+<h2>Крок 8: Запуск ReScript та Vite</h2>
+<p>Для запуску середовища розробки відкрийте два окремі термінали (можна було б поставити <code>concurrently</code>, але для тествого проекту, певно, не варто) та виконайте наступні команди:</p>
+<pre><code class="language-bash">npm run dev:res
+npm run dev
+</code></pre>
+<p>Це запускає компілятор ReScript в режимі спостереження і сервер розробки Vite паралельно. Тепер ви можете відкрити ваш проект за адресою <code>http://127.0.0.1:5173/.</code></p>
+<h2>Крок 9: Додавання глобальних стилів</h2>
+<p>Ви можете імпортувати глобальні стилі в свій код ReScript, додавши наступний рядок в початок вашого файлу index.res:</p>
+<pre><code class="language-reason">%%raw("import './style.css'")
+</code></pre>
+<p>Це дозволить вам включити глобальні стилі CSS у ваш проект, такі як <code>reset.css</code> або інші глобальні стилі (наприклад bootstrap 👿).</p>
+<h2>Крок 10: Додавання нового компонента React</h2>
+<p>Щоб додати новий компонент React, створіть новий файл в папці <code>src</code> з іменем <code>App.res</code>. В цьому файлі додайте наступний код:</p>
+<pre><code class="language-reason">@react.component
+let make = (~title) =&gt; &lt;h1&gt; {React.string(title)} &lt;/h1&gt;
+</code></pre>
+<p>Це створить нам новий компонент, який приймає <code>title</code> в якості пропс. Доречі, ви звернули увагу на відсутність типу в title? Це ще одна сильна сторона ReScript - автоматичне виведення типів, в залежності від використання. І робить він це краще ніж TypeScript</p>
+<p>Ще один важливий момент це дотримуватися конвенції - ім'я змінної для компоненту обов'язково повинно бути <code>make</code>.</p>
+<h2>Оновлення index.res з новим компонентом</h2>
+<p>У файлі index.res оновіть код, щоб включити новий компонент "App":</p>
+<pre><code class="language-reason">ReactDOM.Client.Root.render(root, &lt;App title="Hello world!" /&gt;);
+</code></pre>
+<p>Таким же способом ви можете додавати інші компоненти для побудови вашого застосунку. Просто не забудьте називати змінну <code>make</code> .</p>
+<h2>Крок 12: Використання модулів CSS для стилізації компонента</h2>
+<p>Для застосування стилів до вашого компонента <code>App</code> за допомогою модулів CSS, дотримуйтесь цих кроків:</p>
+<ul>
+<li>Створіть новий файл в папці <code>src</code> з іменем <code>app.module.css</code>.</li>
+<li>Додайте наступний код CSS у app.module.css:</li>
+</ul>
+<pre><code class="language-css">.header {
+  color: #4AF626;
+}
+</code></pre>
+<p>У вашому компоненті <code>App.res</code> імпортуйте стилі за допомогою наступного коду:</p>
+<pre><code class="language-reason">@module external styles: {..} = "./app.module.css";
+</code></pre>
+<p>Застосуйте клас "header" до елементу <code>&lt;h1&gt;</code> у вашому компоненті "App" за допомогою квадратних дужок:</p>
+<pre><code class="language-jsx">&lt;h1 className={styles["header"]}&gt; {React.string(title)} &lt;/h1&gt;
+</code></pre>
+<p>Тепер СSS модулі готові працювати.</p>
+<h2>Підсумки</h2>
+<p>Вітаю, тепер у вас є стартовий проект на React та ReScript. Звичайно тут ще нічого не має, але перший крок уже зроблено - далі справа уже за вами. Репозиторій до цієї статті лежить <a href="https://github.com/Drag13/rescript-react-vite-example">туточки</a></p>
+<p><a href="https://drag13.io/posts/rescript-react-vite-guide/index.html">Англійська версія</a></p>
+<p class="tag">[03.11.2023] rescript react vite</p></article></div></main><footer class="footer"><a href="https://github.com/Drag13/drag13.github.io/blob/development/LICENSE" rel="noopener" target="_blank" title="License">2023 MIT by Drag13</a></footer></body></html>
