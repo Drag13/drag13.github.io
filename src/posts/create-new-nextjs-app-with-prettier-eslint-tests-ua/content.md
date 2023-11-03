@@ -295,3 +295,5 @@ const nextConfig = {
 - Контроль розміру бандлу з [bundlesize](https://www.npmjs.com/package/bundlesize)
 - Вебпак Bundle Analyzer [webpackbundle analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer)
 - E2E тести - [інструкція](https://nextjs.org/docs/pages/building-your-application/optimizing/testing)
+
+[Англійська версія](../create-new-nextjs-app-with-prettier-eslint-tests/index.pug)

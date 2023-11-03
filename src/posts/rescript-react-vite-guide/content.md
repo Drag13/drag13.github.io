@@ -13,7 +13,7 @@ To get started, open your terminal and run the following command:
 npm init vite retest
 ```
 
-This command initializes a Vite project named "retest" template, which provides a basic structure for your project.
+This command initializes a Vite project named "retest", which provides a basic structure for your project.
 
 If you are using git, - update `.gitignore` with next two lines: 
 
@@ -37,7 +37,7 @@ Upon project initialization, you may find some unnecessary files and folders cre
 Your project structure should now be much cleaner and easier to use.
 
 ## Step 3: Install Dependencies
-Next, install the required dependencies for React, ReScript, and Vite. Run the following commands:
+Next, install the required dependencies for React, ReScript. Run the following commands:
 
 ```bash
 npm install @rescript/react rescript -D
@@ -64,7 +64,7 @@ To configure ReScript, create a bsconfig.json file in the project root and popul
 
 ```json
 {
-  "name": "your-project-name",
+  "name": "drag13proj",
   "sources": [
     {
       "dir": "src",
@@ -83,7 +83,7 @@ To configure ReScript, create a bsconfig.json file in the project root and popul
 }
 ```
 
-Make sure to replace "your-project-name" with your desired project name.
+Make sure to replace `drag13proj` with your desired project name.
 
 ## Step 6: Create an index.res File
 In the `src` folder, create a new file named index.res and add the following ReScript code:
@@ -176,3 +176,5 @@ With these steps, you can style your React components using CSS modules.
 Congratulations! You've successfully set up a development environment with React, ReScript, and Vite. This powerful combination allows you to create efficient and maintainable web applications with ease. With the basics in place, you can now start building your application and exploring the full capabilities of these technologies. Enjoy your web development journey!
 
 You can find the code example in the [GitHub demo repository](https://github.com/Drag13/rescript-react-vite-example)
+
+[Ukrainian version](../rescript-react-vite-guide-ua/index.pug)
